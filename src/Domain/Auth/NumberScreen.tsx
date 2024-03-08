@@ -3,6 +3,7 @@ import {
   FlatList,
   Image,
   Modal,
+  StyleSheet,
   Text,
   TextInput,
   TouchableOpacity,
@@ -17,12 +18,13 @@ import CustomDropdown from './CommonComponents/DropdownCustom';
 import {useState} from 'react';
 import Call from 'react-native-vector-icons/Ionicons';
 import Check from 'react-native-vector-icons/MaterialCommunityIcons';
+import CustomButton from './CommonComponents/CustomButton';
 
-const NumberScreen = () => {
-  const {width, height} = Dimensions.get('screen');
+const {width, height} = Dimensions.get('screen');
+const NumberScreen = ({navigation}: any) => {
   const [dataModal, setDataModal] = useState(false);
   const [Value, selectedValue] = useState(NumberArray[0]);
-  const [check,SetCheck]=useState(false)
+  const [check, SetCheck] = useState(false);
 
   const showDataModal = () => {
     setDataModal(true);
@@ -33,72 +35,39 @@ const NumberScreen = () => {
   const OnChange = (val: number) => {
     selectedValue(val);
   };
+  const ClickHandle = () => {
+    navigation.navigate('OtpScreen');
+  };
   return (
-    <View style={{flex: 1}}>
+    <View style={Styles.mainContainer}>
       <BlueWrapper>
-        <View style={{flex: 1, alignItems: 'center'}}>
+        <View style={Styles.ImageWrapper}>
           <Image
             source={OtpLogo}
-            style={{width: 100, height: 100, marginTop: 70}}
+            style={Styles.ImageStyle}
             resizeMode="contain"
           />
         </View>
       </BlueWrapper>
       <WhiteWrapper>
-        <View style={{marginTop: 30, marginHorizontal: 20}}>
-          <Text
-            style={{
-              color: '#01C1E5',
-              fontWeight: 'bold',
-              fontSize: 24,
-              marginBottom: 15,
-            }}>
-            Welcome!
-          </Text>
+        <View style={Styles.subWrapper}>
+          <Text style={Styles.welcomeText}>Welcome!</Text>
           <View>
-            <Text style={{color: '#8A8DA0'}}>
+            <Text style={Styles.subText}>
               Please enter your phone number where you can receive a text.
             </Text>
           </View>
           <View style={{flexDirection: 'row'}}>
             <TouchableOpacity
               onPress={showDataModal}
-              style={{
-                backgroundColor: '#FFFFFF',
-                height: 50,
-                width: 80,
-                borderRadius: 30,
-                elevation: 4,
-                shadowOpacity: 0.5,
-                shadowColor: 'black',
-                shadowOffset: {width: 5, height: 5},
-                alignItems: 'center',
-                justifyContent: 'center',
-                marginTop: 20,
-              }}>
+              style={Styles.initialNumber}>
               <TextInput
                 value={`+${Value} v`}
                 style={{fontSize: 15}}
                 editable={false}
               />
             </TouchableOpacity>
-            <View
-              style={{
-                backgroundColor: '#FFFFFF',
-                height: height * 0.06,
-                width: height * 0.3,
-                borderRadius: 30,
-                elevation: 4,
-                shadowOpacity: 0.5,
-                shadowColor: 'black',
-                shadowOffset: {width: 5, height: 5},
-                alignItems: 'center',
-                justifyContent: 'space-between',
-                marginTop: 20,
-                marginLeft: 20,
-                flexDirection: 'row',
-                paddingHorizontal: height * 0.025,
-              }}>
+            <View style={Styles.actualNumber}>
               <TextInput
                 style={{fontSize: 15}}
                 // editable={false}
@@ -107,10 +76,29 @@ const NumberScreen = () => {
               <Call name="call-outline" color={'black'} size={21} />
             </View>
           </View>
-          <View style={{flexDirection: 'row'}}>
-              <Check name='checkbox-marked' color={"#01C1E5"}/>
-              <Check name='checkbox-blank-outline' color={"#01C1E5"}/>
-              <Text>keep me sign in</Text>
+          <View
+            style={{
+              flexDirection: 'row',
+              alignItems: 'center',
+              marginVertical: 15,
+            }}>
+            {check ? (
+              <TouchableOpacity onPress={() => SetCheck(false)}>
+                <Check name="checkbox-marked" color={'#01C1E5'} size={20} />
+              </TouchableOpacity>
+            ) : (
+              <TouchableOpacity onPress={() => SetCheck(true)}>
+                <Check
+                  name="checkbox-blank-outline"
+                  color={'#01C1E5'}
+                  size={20}
+                />
+              </TouchableOpacity>
+            )}
+            <Text style={{marginLeft: 5}}>keep me sign in</Text>
+          </View>
+          <View style={{marginTop: 40}}>
+            <CustomButton label={'VERIFY'} onClick={ClickHandle} />
           </View>
         </View>
       </WhiteWrapper>
@@ -125,3 +113,46 @@ const NumberScreen = () => {
 };
 
 export default NumberScreen;
+
+const Styles = StyleSheet.create({
+  mainContainer: {flex: 1},
+  ImageWrapper: {flex: 1, alignItems: 'center'},
+  ImageStyle: {width: 100, height: 100, marginTop: 70},
+  subWrapper: {marginTop: 30, marginHorizontal: 20},
+  welcomeText: {
+    color: '#01C1E5',
+    fontWeight: 'bold',
+    fontSize: 24,
+    marginBottom: 15,
+  },
+  subText: {color: '#8A8DA0'},
+  initialNumber: {
+    backgroundColor: '#FFFFFF',
+    height: 50,
+    width: 80,
+    borderRadius: 30,
+    elevation: 4,
+    shadowOpacity: 0.5,
+    shadowColor: 'black',
+    shadowOffset: {width: 5, height: 5},
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginTop: 20,
+  },
+  actualNumber: {
+    backgroundColor: '#FFFFFF',
+    height: height * 0.06,
+    width: height * 0.3,
+    borderRadius: 30,
+    elevation: 4,
+    shadowOpacity: 0.5,
+    shadowColor: 'black',
+    shadowOffset: {width: 5, height: 5},
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    marginTop: 20,
+    marginLeft: 20,
+    flexDirection: 'row',
+    paddingHorizontal: height * 0.025,
+  },
+});

@@ -6,6 +6,7 @@ import {createStackNavigator} from '@react-navigation/stack';
 import Onboarding1 from './src/Domain/Auth/Onboarding1';
 import OnboardingCarousel from './src/Domain/Auth/OnboardingCarousel';
 import NumberScreen from './src/Domain/Auth/NumberScreen';
+import OtpScreen from './src/Domain/Auth/OtpScreen';
 
 const App = () => {
   // const Tab = createBottomTabNavigator();
@@ -16,15 +17,24 @@ const App = () => {
         <Tab.Screen name="Splash" component={SplashScreen} options={{headerShown: false}} />
       </Tab.Navigator> */}
       <Stack.Navigator>
-        {/* <Stack.Screen name="Splash" component={SplashScreen} options={{headerShown: false}} /> */}
         <Stack.Screen
-          name="NumberScreen"
-          component={NumberScreen}
+          name="Splash"
+          component={SplashScreen}
           options={{headerShown: false}}
         />
         <Stack.Screen
           name="OnBoarding1"
           component={OnboardingCarousel}
+          options={{headerShown: false}}
+        />
+        <Stack.Screen
+          name="OtpScreen"
+          component={OtpScreen}
+          options={{headerShown: false}}
+        />
+        <Stack.Screen
+          name="NumberScreen"
+          component={NumberScreen}
           options={{headerShown: false}}
         />
       </Stack.Navigator>

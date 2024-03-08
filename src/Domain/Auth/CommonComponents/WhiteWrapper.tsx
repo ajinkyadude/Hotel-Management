@@ -1,16 +1,24 @@
 import {View} from 'react-native';
 
-const WhiteWrapper = ({children}: any) => {
+interface CustomWhiteWrapper {
+  children: JSX.Element;
+}
+
+const WhiteWrapper = ({children}: CustomWhiteWrapper) => {
   return (
     <View
       style={{
         backgroundColor: '#01C0E3',
         height: '75%',
+        position: 'absolute',
+        bottom: 0,
+        width: '100%'
       }}>
       <View
         style={{
           backgroundColor: '#FFFFFF',
-          borderRadius: 20,
+          borderTopLeftRadius: 20,
+          borderTopRightRadius: 20,
           width: '100%',
           height: '100%',
         }}>

@@ -1,7 +1,13 @@
 import {Image, View} from 'react-native';
 import Splash from '../../../src/Assets/Splash.png';
+import { useEffect } from 'react';
 
-const SplashScreen = () => {
+const SplashScreen = ({navigation}) => {
+    useEffect(()=>{
+        setTimeout(()=>{
+            navigation.navigate('OnBoarding1')
+        },2000);
+    },[])
   return (
     <View
       style={{

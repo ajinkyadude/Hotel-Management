@@ -11,8 +11,17 @@ import OnboardingOne from '../../../src/Assets/OnboardingOne.png';
 import OnboardingOne2 from '../../../src/Assets/OnboardingTwo.png';
 import Arrow from 'react-native-vector-icons/AntDesign';
 
-const Onboarding2 = ({nextHandle}: any) => {
+interface CustomOnboarding2Props {
+  nextHandle: (data: number) => void;
+  navigation: any;
+}
+
+const Onboarding2 = ({nextHandle, navigation}: CustomOnboarding2Props) => {
   const {width, height} = Dimensions.get('screen');
+  const nextNavigate = () => {
+    navigation.navigate('NumberScreen')
+  }
+
   return (
     <View
       style={[
@@ -24,7 +33,7 @@ const Onboarding2 = ({nextHandle}: any) => {
         style={{width: 100, height: 80, marginTop: 40}}
       />
       <View style={{position: 'absolute', right: 0, top: 0, padding: 20}}>
-        <TouchableOpacity>
+        <TouchableOpacity onPress={nextNavigate}>
           <Text style={{color: 'black'}}>Skip</Text>
         </TouchableOpacity>
       </View>
@@ -77,7 +86,7 @@ const Onboarding2 = ({nextHandle}: any) => {
                 alignItems: 'center',
                 justifyContent: 'center',
               }}>
-              <TouchableOpacity onPress={() => nextHandle(2)}>
+              <TouchableOpacity onPress={nextNavigate}>
                 <Arrow name="arrowright" color="#01C0E3" size={38} />
               </TouchableOpacity>
             </View>

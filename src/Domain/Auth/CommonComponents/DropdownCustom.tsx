@@ -7,8 +7,19 @@ import {
   View,
 } from 'react-native';
 
-const CustomDropdown = ({data, isVisible, cancleHandle, ItemSelected}: any) => {
-  const renderComponent = (item: any) => {
+interface CustomDropdownProps {
+    data: number[],
+    isVisible: boolean,
+    cancleHandle: () => void,
+    ItemSelected: (data: number) => void,
+}
+
+interface renderProps {
+    item: number,
+}
+
+const CustomDropdown = ({data, isVisible, cancleHandle, ItemSelected}: CustomDropdownProps) => {
+  const renderComponent = (item: renderProps) => {
     return (
       <TouchableOpacity
         onPress={() => {
