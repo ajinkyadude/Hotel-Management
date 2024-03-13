@@ -8,7 +8,8 @@ const WhiteWrapper = ({children}: CustomWhiteWrapper) => {
   return (
     <View
       style={{
-        backgroundColor: '#01C0E3',
+        backgroundColor: '#F4F5F7',
+        // backgroundColor: 'red',
         height: '75%',
         position: 'absolute',
         bottom: 0,
@@ -16,7 +17,9 @@ const WhiteWrapper = ({children}: CustomWhiteWrapper) => {
       }}>
       <View
         style={{
-          backgroundColor: '#FFFFFF',
+          // backgroundColor: '#FFFFFF',
+          // backgroundColor: 'red',
+          backgroundColor: '#F4F5F7',
           borderTopLeftRadius: 20,
           borderTopRightRadius: 20,
           width: '100%',

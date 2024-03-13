@@ -14,10 +14,11 @@ import WhiteWrapper from './CommonComponents/WhiteWrapper';
 import CustomTextInput from './CommonComponents/CustomTextInput';
 import {KeyboardAvoidingView} from 'react-native';
 
-const OtpScreen = () => {
+const OtpScreen = ({navigation}: any) => {
   const {width, height} = Dimensions.get('screen');
   const otpSubmit = (val: number[]) => {
     console.log('val ***  ' + val);
+    navigation.navigate('TermsCondition')
   };
   return (
     <View style={Styles.mainContainer}>

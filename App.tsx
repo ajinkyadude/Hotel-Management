@@ -7,6 +7,8 @@ import Onboarding1 from './src/Domain/Auth/Onboarding1';
 import OnboardingCarousel from './src/Domain/Auth/OnboardingCarousel';
 import NumberScreen from './src/Domain/Auth/NumberScreen';
 import OtpScreen from './src/Domain/Auth/OtpScreen';
+import TermsCondition from './src/Domain/Auth/TermsCondition';
+import BottonNavigation from './src/Domain/Home/Screens/BottomNavigation';
 
 const App = () => {
   // const Tab = createBottomTabNavigator();
@@ -17,9 +19,14 @@ const App = () => {
         <Tab.Screen name="Splash" component={SplashScreen} options={{headerShown: false}} />
       </Tab.Navigator> */}
       <Stack.Navigator>
-        <Stack.Screen
+      <Stack.Screen
           name="Splash"
           component={SplashScreen}
+          options={{headerShown: false}}
+        />
+      <Stack.Screen
+          name="BottonNavigation"
+          component={BottonNavigation}
           options={{headerShown: false}}
         />
         <Stack.Screen
@@ -37,6 +44,17 @@ const App = () => {
           component={NumberScreen}
           options={{headerShown: false}}
         />
+
+        <Stack.Screen
+          name="TermsCondition"
+          component={TermsCondition}
+          options={{headerShown: false}}
+        />
+        {/* <Stack.Screen
+          name="BottonNavigation"
+          component={BottonNavigation}
+          options={{headerShown: false}}
+        /> */}
       </Stack.Navigator>
     </NavigationContainer>
   );
