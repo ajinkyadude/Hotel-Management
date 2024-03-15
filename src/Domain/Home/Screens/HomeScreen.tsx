@@ -70,6 +70,26 @@ const HomeScreen = ({navigation}: any) => {
       subText: '4814 Bingamon Road Warrensville Heights, OH 44128',
       ImageName: ImagePath.Veg,
     },
+    {
+      Title: 'Parallax Restaurant',
+      subText: '4814 Bingamon Road Warrensville Heights, OH 44128',
+      ImageName: ImagePath.Cafe,
+    },
+    {
+      Title: 'Spa and Wellness',
+      subText: '4814 Bingamon Road Warrensville Heights, OH 44128',
+      ImageName: ImagePath.Spa,
+    },
+    {
+      Title: 'Sequia Hotel',
+      subText: '4814 Bingamon Road Warrensville Heights, OH 44128',
+      ImageName: ImagePath.Lodge,
+    },
+    {
+      Title: 'Paris in The Sky',
+      subText: '4814 Bingamon Road Warrensville Heights, OH 44128',
+      ImageName: ImagePath.Paris,
+    },
   ];
 
   return (
@@ -116,7 +136,7 @@ const HomeScreen = ({navigation}: any) => {
         <View
           style={{
             marginTop: Platform.OS === 'ios' ? 15 : 30,
-            alignItems: 'center'
+            alignItems: 'center',
           }}>
           <View
             style={{
@@ -140,7 +160,7 @@ const HomeScreen = ({navigation}: any) => {
         {/* </View> */}
       </BlueWrapper>
       <WhiteWrapper>
-        <ScrollView style={{width: '100%', marginBottom: 10}}>
+        <ScrollView style={{width: '100%', marginBottom: 10, borderRadius: 20}}>
           <View style={{width: '100%', alignItems: 'center'}}>
             <CardComponent
               Title={'Sell Your reserved Wait!'}

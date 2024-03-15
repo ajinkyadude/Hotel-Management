@@ -13,7 +13,8 @@ const WhiteWrapper = ({children}: CustomWhiteWrapper) => {
         height: '75%',
         position: 'absolute',
         bottom: 0,
-        width: '100%'
+        width: '100%',
+        borderRadius: 20
       }}>
       <View
         style={{

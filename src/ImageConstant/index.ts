@@ -14,6 +14,10 @@ import Chair from '../Assets/Chair.png';
 import Lest from '../Assets/Lest.png';
 import Song from '../Assets/Song.png';
 import Veg from '../Assets/Veg.png';
+import Cafe from '../Assets/Cafe.png';
+import Spa from '../Assets/Spa.png';
+import Lodge from '../Assets/Lodge.png';
+import Paris from '../Assets/Paris.png';
 
 export const ImagePath = {
   SellImage,
@@ -31,5 +35,9 @@ export const ImagePath = {
   Chair,
   Lest,
   Song,
-  Veg
+  Veg,
+  Cafe,
+  Spa,
+  Lodge,
+  Paris
 };
