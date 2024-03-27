@@ -30,40 +30,55 @@ const CustomTextInput = ({onChange}: CustomTextInputProps) => {
     // console.log("val +  "+JSON.stringify(val));
 
     if (val) {
-      if (Index < 5) {
-        setIndex(Index + 1);
-      }
       setArray(prev => [...prev, val]);
-    } else {
-      if (Index > 0) {
-        setIndex(Index - 1);
-      }
+      onChangeIndex(index + 1);
+    } else  if (index > 0 && !array[index]){
+      onChangeIndex(index - 1);
       let array2 = array;
       let ne = array2.splice(index, 1);
       setArray(array2);
     }
   };
 
-  console.log('index  ***  ' + Index);
+  const onChangeIndex = (newIndex: number) => {
+    if (newIndex >= 0 && newIndex <= 5) {
+      setIndex(newIndex);
+    }
+  };
 
+  console.log('Array   ***  ' + array);
+
+  // useEffect(() => {
+  //   if (Index == 0) {
+  //     firstInput.current.focus();
+  //   }
+  //   if (Index == 1) {
+  //     secondInput.current.focus();
+  //   }
+  //   if (Index == 2) {
+  //     thirdInput.current.focus();
+  //   }
+  //   if (Index == 3) {
+  //     fourthInput.current.focus();
+  //   }
+  //   if (Index == 4) {
+  //     fifthInput.current.focus();
+  //   }
+  //   if (Index == 5) {
+  //     sixth.current.focus();
+  //   }
+  // }, [Index]);
   useEffect(() => {
-    if (Index == 0) {
-      firstInput.current.focus();
-    }
-    if (Index == 1) {
-      secondInput.current.focus();
-    }
-    if (Index == 2) {
-      thirdInput.current.focus();
-    }
-    if (Index == 3) {
-      fourthInput.current.focus();
-    }
-    if (Index == 4) {
-      fifthInput.current.focus();
-    }
-    if (Index == 5) {
-      sixth.current.focus();
+    const inputs = [
+      firstInput,
+      secondInput,
+      thirdInput,
+      fourthInput,
+      fifthInput,
+      sixth,
+    ];
+    if (Index >= 0 && Index < inputs.length) {
+      inputs[Index].current?.focus();
     }
   }, [Index]);
 
@@ -96,7 +111,11 @@ const CustomTextInput = ({onChange}: CustomTextInputProps) => {
             maxLength={1}
             style={Styles.textInputStyle}
             // autoFocus={Index == 0 ? true : false}
-            onChangeText={(text: any) => changeHandle(text, 0)}
+            onChangeText={(text: any) => {
+              console.log(' first call' + text);
+
+              changeHandle(text, 0);
+            }}
             ref={firstInput}
             onKeyPress={({nativeEvent}) => {
               if (
@@ -112,7 +131,10 @@ const CustomTextInput = ({onChange}: CustomTextInputProps) => {
             maxLength={1}
             style={Styles.textInputStyle}
             autoFocus={Index == 1 ? true : false}
-            onChangeText={(text: any) => changeHandle(text, 1)}
+            onChangeText={(text: any) => {
+              console.log(' second call');
+              changeHandle(text, 1);
+            }}
             ref={secondInput}
             onKeyPress={({nativeEvent}) => {
               if (
@@ -128,7 +150,10 @@ const CustomTextInput = ({onChange}: CustomTextInputProps) => {
             maxLength={1}
             style={Styles.textInputStyle}
             autoFocus={Index == 2 ? true : false}
-            onChangeText={(text: any) => changeHandle(text, 2)}
+            onChangeText={(text: any) => {
+              console.log(' Third call');
+              changeHandle(text, 2);
+            }}
             ref={thirdInput}
             onKeyPress={({nativeEvent}) => {
               if (
@@ -144,7 +169,10 @@ const CustomTextInput = ({onChange}: CustomTextInputProps) => {
             maxLength={1}
             style={Styles.textInputStyle}
             autoFocus={Index == 3 ? true : false}
-            onChangeText={(text: any) => changeHandle(text, 3)}
+            onChangeText={(text: any) => {
+              console.log(' fourth call');
+              changeHandle(text, 3);
+            }}
             ref={fourthInput}
             onKeyPress={({nativeEvent}) => {
               if (
@@ -160,7 +188,10 @@ const CustomTextInput = ({onChange}: CustomTextInputProps) => {
             maxLength={1}
             style={Styles.textInputStyle}
             autoFocus={Index == 4 ? true : false}
-            onChangeText={(text: any) => changeHandle(text, 4)}
+            onChangeText={(text: any) => {
+              console.log(' fifth call');
+              changeHandle(text, 4);
+            }}
             ref={fifthInput}
             onKeyPress={({nativeEvent}) => {
               if (
@@ -176,7 +207,10 @@ const CustomTextInput = ({onChange}: CustomTextInputProps) => {
             maxLength={1}
             style={Styles.textInputStyle}
             autoFocus={Index == 5 ? true : false}
-            onChangeText={(text: any) => changeHandle(text, 5)}
+            onChangeText={(text: any) => {
+              console.log(' sixth call');
+              changeHandle(text, 5);
+            }}
             ref={sixth}
             onKeyPress={({nativeEvent}) => {
               if (

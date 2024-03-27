@@ -18,6 +18,16 @@ import Cafe from '../Assets/Cafe.png';
 import Spa from '../Assets/Spa.png';
 import Lodge from '../Assets/Lodge.png';
 import Paris from '../Assets/Paris.png';
+import Profile from '../Assets/ProfileImage.png'
+import QrCode from '../Assets/QrCode.png';
+import MyProfile from '../Assets/MyProfile.png';
+import Favourites from '../Assets/Favourites.png';
+import Message from '../Assets/Message.png';
+import Wallet from '../Assets/Wallet.png';
+import TransactionIcon from '../Assets/TransactionIcon.png';
+import Payment from '../Assets/Payment.png';
+import ProfileStar from '../Assets/ProfileStar.png';
+import Settings from '../Assets/Settings.png';
 
 export const ImagePath = {
   SellImage,
@@ -39,5 +49,15 @@ export const ImagePath = {
   Cafe,
   Spa,
   Lodge,
-  Paris
+  Paris,
+  Profile,
+  QrCode,
+  MyProfile,
+  Favourites,
+  Message,
+  Wallet,
+  TransactionIcon,
+  Payment,
+  ProfileStar,
+  Settings
 };
