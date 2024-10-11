@@ -28,6 +28,7 @@ import TransactionIcon from '../Assets/TransactionIcon.png';
 import Payment from '../Assets/Payment.png';
 import ProfileStar from '../Assets/ProfileStar.png';
 import Settings from '../Assets/Settings.png';
+import Wallet2 from '../Assets/Wallet2.png'
 
 export const ImagePath = {
   SellImage,
@@ -59,5 +60,6 @@ export const ImagePath = {
   TransactionIcon,
   Payment,
   ProfileStar,
-  Settings
+  Settings,
+  Wallet2
 };

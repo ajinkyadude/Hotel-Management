@@ -13,12 +13,15 @@ import OtpLogo from '../../../src/Assets/OtpLogo.png';
 import WhiteWrapper from './CommonComponents/WhiteWrapper';
 import CustomTextInput from './CommonComponents/CustomTextInput';
 import {KeyboardAvoidingView} from 'react-native';
+import OTPInputView from '@twotalltotems/react-native-otp-input';
+
+const {height, width} = Dimensions.get('screen');
 
 const OtpScreen = ({navigation}: any) => {
   const {width, height} = Dimensions.get('screen');
-  const otpSubmit = (val: number[]) => {
+  const otpSubmit = (val: string) => {
     console.log('val ***  ' + val);
-    navigation.navigate('TermsCondition')
+    navigation.navigate('TermsCondition');
   };
   return (
     <View style={Styles.mainContainer}>
@@ -43,7 +46,17 @@ const OtpScreen = ({navigation}: any) => {
             </View>
 
             <View style={{marginTop: 20}}>
-              <CustomTextInput onChange={otpSubmit} />
+              {/* <CustomTextInput onChange={otpSubmit} /> */}
+              <OTPInputView
+                style={{width: '100%', height: 200}}
+                pinCount={6}
+                // code={this.state.code} //You can supply this prop or not. The component will be used as a controlled / uncontrolled component respectively.
+                // onCodeChanged = {code => { this.setState({code})}}
+                autoFocusOnLoad={true}
+                codeInputFieldStyle={Styles.underlineStyleBase}
+                // codeInputHighlightStyle={styles.underlineStyleHighLighted}
+                onCodeFilled={(code: string) => otpSubmit(code)}
+              />
             </View>
           </View>
         </ScrollView>
@@ -67,4 +80,12 @@ const Styles = StyleSheet.create({
     marginBottom: 15,
   },
   subText: {color: '#8A8DA0'},
+  underlineStyleBase: {
+    borderWidth: 1,
+    borderColor: '#01C1E5',
+    width: height * 0.06,
+    height: height * 0.06,
+    borderRadius: 10,
+    color: 'black'
+  },
 });

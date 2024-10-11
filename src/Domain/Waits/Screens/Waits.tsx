@@ -2,6 +2,7 @@ import {BottomTabNavigationProp} from '@react-navigation/bottom-tabs';
 import {
   Dimensions,
   Image,
+  Modal,
   Platform,
   ScrollView,
   StyleSheet,
@@ -26,6 +27,8 @@ import Calendar from 'react-native-vector-icons/Ionicons';
 import {Array} from '../Constant';
 import {useState} from 'react';
 import MapView from 'react-native-maps';
+import ModalScreen from '../../../CommonComponents/Modal/Modal';
+import WalletScreen from '../../../CommonComponents/Modal/WalletScreen';
 
 interface RootStackParamList {
   HomeScreen: undefined; // Optional: If Home screen doesn't need params
@@ -179,6 +182,81 @@ const Waits = ({navigation}: any) => {
           </View>
         </ScrollView>
       </WhiteWrapper>
+      {/* <Modal visible={true} animationType="fade" transparent>
+        <View
+          style={{
+            backgroundColor: '#101828CC',
+            height: '90%',
+            marginTop: '30%',
+            borderRadius: 15,
+          }}>
+          <View
+            style={{
+              backgroundColor: '#F4F5F7',
+              height: '30%',
+              borderRadius: 15,
+            }}>
+            <View
+              style={{
+                backgroundColor: '#FFFFFF',
+                flex: 1,
+                marginLeft: 15,
+                marginRight: 15,
+                marginTop: 15,
+                borderRadius: 10,
+              }}>
+              <View style={{flexDirection: 'column'}}>
+                <View>
+                  <Text style={{padding: 10, fontWeight: 'bold', fontSize: 16}}>
+                    Your Balance
+                  </Text>
+                </View>
+                <View
+                  style={{
+                    flexDirection: 'row',
+                    alignItems: 'center',
+                    marginHorizontal: 10,
+                  }}>
+                  <View
+                    style={{
+                      width: '50%',
+                      flexDirection: 'row',
+                      alignItems: 'center',
+                      paddingLeft: 10,
+                    }}>
+                    <Image
+                      source={ImagePath.Wallet2}
+                      style={{width: 50, height: 50}}
+                    />
+                    <Text
+                      style={{
+                        paddingLeft: 10,
+                        fontWeight: 'bold',
+                        fontSize: 18,
+                      }}>{`$3,486.00`}</Text>
+                  </View>
+                  <View style={{width: '50%', alignItems: 'flex-end'}}>
+                    <CustomButton
+                      label={'WITHDRAW'}
+                      onClick={() => {}}
+                      style={{width: '70%'}}
+                    />
+                  </View>
+                </View>
+                <View style={{paddingTop: 20, marginHorizontal: 20}}>
+                  <CustomButton label={'Add Amount'} onClick={() => {}} />
+                </View>
+              </View>
+            </View>
+            <View style={{alignItems: 'center'}}>
+              <Arrow name="keyboard-arrow-up" size={33} color={'#8A8DA0'} />
+            </View>
+          </View>
+        </View>
+      </Modal> */}
+      <ModalScreen>
+        <WalletScreen />
+      </ModalScreen>
     </View>
   );
 };

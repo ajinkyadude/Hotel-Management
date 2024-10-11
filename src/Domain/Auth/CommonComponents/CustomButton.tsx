@@ -40,7 +40,11 @@ const CustomButton = ({
         )}
         <Text
           style={[
-            {color: textStyle ? textStyle : '#FFFFFF', fontWeight: 'bold'},
+            {
+              color: textStyle ? textStyle : '#FFFFFF',
+              fontWeight: 'bold',
+              // fontSize: 16,
+            },
           ]}>
           {label}
         </Text>

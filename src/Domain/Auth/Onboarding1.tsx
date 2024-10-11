@@ -45,7 +45,9 @@ const Onboarding1 = ({nextHandle, navigation}: CustomOnboarding1Props) => {
             </Text>
             <Text style={Styles.subText1}>do eiusmod tempor incididunt</Text>
             <TouchableOpacity
-              onPress={() => nextHandle(1)}
+              onPress={() => { 
+                console.log('presed')
+                nextHandle(1)}}
               style={Styles.touchContainer}>
               <Arrow name="arrowright" color="#01C0E3" size={38} />
             </TouchableOpacity>

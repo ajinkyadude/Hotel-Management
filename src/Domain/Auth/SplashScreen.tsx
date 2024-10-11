@@ -5,7 +5,11 @@ import { useEffect } from 'react';
 const SplashScreen = ({navigation}) => {
     useEffect(()=>{
         setTimeout(()=>{
-            navigation.navigate('OnBoarding1')
+            // navigation.navigate('OnBoarding1')
+            navigation.reset({
+              index: 0,
+              routes: [{name: 'OnBoarding1'}]
+            })
         },2000);
     },[])
   return (
