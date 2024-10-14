@@ -41,6 +41,10 @@ const {height, width} = Dimensions.get('screen');
 const Waits = ({navigation}: any) => {
   const ClickHandle = () => {};
   const [selected, setSelected] = useState(false);
+  const [modalVisible, setModalVisible] = useState(false);
+  const modalHandler = () => {
+    setModalVisible(true);
+  };
 
   return (
     <View style={Styles.mainContainer}>
@@ -74,7 +78,7 @@ const Waits = ({navigation}: any) => {
                 ? {marginTop: height * 0.095}
                 : {marginTop: height * 0.05},
             ]}>
-            <TouchableOpacity>
+            <TouchableOpacity onPress={modalHandler}>
               <Wallet
                 name="wallet-outline"
                 color="#FFFFFF"
@@ -254,7 +258,7 @@ const Waits = ({navigation}: any) => {
           </View>
         </View>
       </Modal> */}
-      <ModalScreen>
+      <ModalScreen visible={modalVisible}>
         <WalletScreen />
       </ModalScreen>
     </View>

@@ -5661,6 +5661,11 @@ react-native-maps@^1.11.3:
   dependencies:
     "@types/geojson" "^7946.0.13"
 
+react-native-otp-textinput@^1.1.6:
+  version "1.1.6"
+  resolved "https://registry.yarnpkg.com/react-native-otp-textinput/-/react-native-otp-textinput-1.1.6.tgz#4e3560e2e0a30849169cff4e40f3035c594a73fc"
+  integrity sha512-auj4etyrp8N2GWyWTDO2If3uMdSoMR9oSJweQYfNEYP8cJEoEHLtDJhNOBJMwTrkRG8YbYroHg3b30TOhLv9kw==
+
 react-native-safe-area-context@^4.9.0:
   version "4.9.0"
   resolved "https://registry.npmjs.org/react-native-safe-area-context/-/react-native-safe-area-context-4.9.0.tgz"

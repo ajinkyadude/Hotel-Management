@@ -1,27 +1,28 @@
 import {
   Dimensions,
   Image,
-  Platform,
   ScrollView,
   StyleSheet,
   Text,
-  TextInput,
   View,
 } from 'react-native';
 import BlueWrapper from './CommonComponents/BlueWrapper';
 import OtpLogo from '../../../src/Assets/OtpLogo.png';
 import WhiteWrapper from './CommonComponents/WhiteWrapper';
-import CustomTextInput from './CommonComponents/CustomTextInput';
-import {KeyboardAvoidingView} from 'react-native';
-import OTPInputView from '@twotalltotems/react-native-otp-input';
+import OTPTextInput from 'react-native-otp-textinput';
+import {Colors} from '../../Constants/Constant';
+import { String } from '../../Constants/String';
 
 const {height, width} = Dimensions.get('screen');
 
 const OtpScreen = ({navigation}: any) => {
-  const {width, height} = Dimensions.get('screen');
   const otpSubmit = (val: string) => {
-    console.log('val ***  ' + val);
     navigation.navigate('TermsCondition');
+  };
+  const codeHandle = (val: string) => {
+    if (val.length == 6) {
+      otpSubmit(val);
+    }
   };
   return (
     <View style={Styles.mainContainer}>
@@ -38,31 +39,25 @@ const OtpScreen = ({navigation}: any) => {
       <WhiteWrapper>
         <ScrollView>
           <View style={Styles.subWrapper}>
-            <Text style={Styles.welcomeText}>Digit Access Code</Text>
+            <Text style={Styles.welcomeText}>{String.digital_access}</Text>
             <View>
               <Text style={Styles.subText}>
-                Digit access code sent to +96 8364 9838 93
+                {String.digital_access_code}
               </Text>
             </View>
 
-            <View style={{marginTop: 20}}>
-              {/* <CustomTextInput onChange={otpSubmit} /> */}
-              <OTPInputView
-                style={{width: '100%', height: 200}}
-                pinCount={6}
-                // code={this.state.code} //You can supply this prop or not. The component will be used as a controlled / uncontrolled component respectively.
-                // onCodeChanged = {code => { this.setState({code})}}
-                autoFocusOnLoad={true}
-                codeInputFieldStyle={Styles.underlineStyleBase}
-                // codeInputHighlightStyle={styles.underlineStyleHighLighted}
-                onCodeFilled={(code: string) => otpSubmit(code)}
+            <View style={Styles.otpTextBoxWrapper}>
+              <OTPTextInput
+                inputCount={6}
+                handleTextChange={codeHandle}
+                textInputStyle={Styles.underlineStyleBase}
+                tintColor={Colors.lightSkyBlue}
               />
             </View>
           </View>
         </ScrollView>
       </WhiteWrapper>
     </View>
-    // </KeyboardAvoidingView>
   );
 };
 
@@ -70,22 +65,27 @@ export default OtpScreen;
 
 const Styles = StyleSheet.create({
   ImageWrapper: {flex: 1, alignItems: 'center'},
-  ImageStyle: {width: 100, height: 100, marginTop: 70},
+  ImageStyle: {
+    width: width * 0.24,
+    height: height * 0.12,
+    marginTop: height * 0.08,
+  },
   mainContainer: {flex: 1},
-  subWrapper: {marginTop: 30, marginHorizontal: 20},
+  subWrapper: {marginTop: height * 0.04, marginHorizontal: width * 0.04},
   welcomeText: {
-    color: '#01C1E5',
+    color: Colors.lightSkyBlue,
     fontWeight: 'bold',
     fontSize: 24,
-    marginBottom: 15,
+    marginBottom: height * 0.03,
   },
-  subText: {color: '#8A8DA0'},
+  subText: {color: Colors.lightGreyArrow},
   underlineStyleBase: {
     borderWidth: 1,
-    borderColor: '#01C1E5',
+    borderColor: Colors.lightSkyBlue,
     width: height * 0.06,
     height: height * 0.06,
     borderRadius: 10,
-    color: 'black'
+    color: Colors.black,
   },
+  otpTextBoxWrapper: {marginTop: height * 0.04},
 });

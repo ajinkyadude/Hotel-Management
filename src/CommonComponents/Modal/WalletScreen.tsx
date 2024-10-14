@@ -1,4 +1,11 @@
-import {Dimensions, Image, StyleSheet, Text, View} from 'react-native';
+import {
+  Dimensions,
+  Image,
+  Platform,
+  StyleSheet,
+  Text,
+  View,
+} from 'react-native';
 import {ImagePath} from '../../ImageConstant';
 import CustomButton from '../../Domain/Auth/CommonComponents/CustomButton';
 import Arrow from 'react-native-vector-icons/MaterialIcons';
@@ -8,34 +15,32 @@ const {height, width} = Dimensions.get('screen');
 
 const WalletScreen = () => {
   return (
-    <View style={Style.mainContainer}>
-      <View style={Style.subContainer}>
-        <View style={Style.headContainer}>
-          <Text style={Style.headingStyle}>{String.balanceText}</Text>
-          <View style={Style.headPartTwo}>
-            <View style={Style.walletContainer}>
-              <Image source={ImagePath.Wallet2} style={Style.imageStyle} />
-              <Text style={Style.priceStyle}>{String.balanceAmount}</Text>
-            </View>
-            <View style={Style.withdrawButtonContainer}>
-              <CustomButton
-                label={String.withdrawText}
-                onClick={() => {}}
-                style={Style.withdrawButtonStyle}
-              />
-            </View>
+    <View style={Style.subContainer}>
+      <View style={Style.headContainer}>
+        <Text style={Style.headingStyle}>{String.balanceText}</Text>
+        <View style={Style.headPartTwo}>
+          <View style={Style.walletContainer}>
+            <Image source={ImagePath.Wallet2} style={Style.imageStyle} />
+            <Text style={Style.priceStyle}>{String.balanceAmount}</Text>
           </View>
-          <View style={Style.submitButtonContainer}>
-            <CustomButton label={String.Add_Amount} onClick={() => {}} />
+          <View style={Style.withdrawButtonContainer}>
+            <CustomButton
+              label={String.withdrawText}
+              onClick={() => {}}
+              style={Style.withdrawButtonStyle}
+            />
           </View>
         </View>
-        <View style={Style.upArrowStyle}>
-          <Arrow
-            name={Icon_Name.upArraw}
-            size={33}
-            color={Colors.lightGreyArrow}
-          />
+        <View style={Style.submitButtonContainer}>
+          <CustomButton label={String.Add_Amount} onClick={() => {}} />
         </View>
+      </View>
+      <View style={Style.upArrowStyle}>
+        <Arrow
+          name={Icon_Name.upArraw}
+          size={33}
+          color={Colors.lightGreyArrow}
+        />
       </View>
     </View>
   );
@@ -44,15 +49,9 @@ const WalletScreen = () => {
 export default WalletScreen;
 
 const Style = StyleSheet.create({
-  mainContainer: {
-    backgroundColor: Colors.modalBackColor,
-    height: '90%',
-    marginTop: '30%',
-    borderRadius: 15,
-  },
   subContainer: {
     backgroundColor: Colors.lightGrey,
-    height: '30%',
+    height: Platform.OS == 'ios' ? '31%' : '34%',
     borderRadius: 15,
   },
   headContainer: {
