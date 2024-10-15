@@ -51,7 +51,7 @@ export default WalletScreen;
 const Style = StyleSheet.create({
   subContainer: {
     backgroundColor: Colors.lightGrey,
-    height: Platform.OS == 'ios' ? '31%' : '34%',
+    height: Platform.OS == 'ios' ? '28%' : '31%',
     borderRadius: 15,
   },
   headContainer: {

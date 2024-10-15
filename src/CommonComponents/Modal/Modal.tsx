@@ -1,11 +1,35 @@
-import {Image, Modal, StyleSheet, Text, View} from 'react-native';
-import { Colors } from '../../Constants/Constant';
+import {
+  Image,
+  Modal,
+  StyleSheet,
+  Text,
+  TouchableWithoutFeedback,
+  View,
+} from 'react-native';
+import {Colors} from '../../Constants/Constant';
 
-const ModalScreen = ({children, visible}: any) => {
+interface ModalScreenProp {
+  children: JSX.Element;
+  visible: boolean;
+  halfModal: boolean;
+  closeModal: () => void;
+}
+
+const ModalScreen = ({
+  children,
+  visible = false,
+  halfModal = false,
+  closeModal,
+}: ModalScreenProp) => {
   return (
     <>
       <Modal visible={visible} animationType="fade" transparent>
-        <View style={Style.mainContainer}>{children}</View>
+        <TouchableWithoutFeedback onPress={closeModal}>
+          <View
+            style={[Style.mainContainer, {marginTop: halfModal ? '30%' : 0}]}>
+            {children}
+          </View>
+        </TouchableWithoutFeedback>
       </Modal>
     </>
   );
@@ -16,8 +40,7 @@ export default ModalScreen;
 const Style = StyleSheet.create({
   mainContainer: {
     backgroundColor: Colors.modalBackColor,
-    height: '90%',
-    marginTop: '30%',
+    height: '100%',
     borderRadius: 15,
   },
 });

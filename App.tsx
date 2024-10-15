@@ -16,11 +16,6 @@ const App = () => {
   return (
     <NavigationContainer>
       <Stack.Navigator>
-      <Stack.Screen
-          name="OtpScreen"
-          component={OtpScreen}
-          options={{headerShown: false}}
-        />
         <Stack.Screen
           name="BottonNavigation"
           component={BottonNavigation}
@@ -41,11 +36,11 @@ const App = () => {
           component={OnboardingCarousel}
           options={{headerShown: false}}
         />
-        {/* <Stack.Screen
+        <Stack.Screen
           name="OtpScreen"
           component={OtpScreen}
           options={{headerShown: false}}
-        /> */}
+        />
         <Stack.Screen
           name="NumberScreen"
           component={NumberScreen}
