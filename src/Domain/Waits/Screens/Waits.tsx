@@ -1,4 +1,3 @@
-import {BottomTabNavigationProp} from '@react-navigation/bottom-tabs';
 import {
   Dimensions,
   Image,
@@ -16,7 +15,7 @@ import {TouchableOpacity} from 'react-native-gesture-handler';
 import Wallet from 'react-native-vector-icons/Ionicons';
 import Bell from 'react-native-vector-icons/MaterialCommunityIcons';
 import Search from 'react-native-vector-icons/AntDesign';
-import {Colors} from '../../../Constants/Constant';
+import {Colors, Icon_Name} from '../../../Constants/Constant';
 import CustomButton from '../../Auth/CommonComponents/CustomButton';
 import HotelCard from '../../Home/Components/HotelCard';
 import Calendar from 'react-native-vector-icons/Ionicons';
@@ -26,18 +25,13 @@ import MapView from 'react-native-maps';
 import ModalScreen from '../../../CommonComponents/Modal/Modal';
 import WalletScreen from '../../../CommonComponents/Modal/WalletScreen';
 import NotificationScreen from '../../../CommonComponents/Modal/NotificationScreen';
+import {String} from '../../../Constants/String';
 
-interface RootStackParamList {
-  HomeScreen: undefined; // Optional: If Home screen doesn't need params
-  // Other screens in your root stack (if any)
-}
-interface HomeProps extends BottomTabNavigationProp<any, 'HomeScreen'> {
-  // Other props specific to your Home screen
-}
-const {height, width} = Dimensions.get('screen');
+const {height} = Dimensions.get('screen');
 const Waits = ({navigation}: any) => {
   const ClickHandle = () => {};
   const [selected, setSelected] = useState(false);
+  const [isFocus, setIsFocus] = useState(false);
   const [modalVisible, setModalVisible] = useState(false);
   const [notModal, setNotModal] = useState<boolean>(false);
   const walletModalHandler = () => {
@@ -53,6 +47,10 @@ const Waits = ({navigation}: any) => {
     setNotModal(false);
   };
 
+  const searchHandle = () => {
+    navigation.navigate('searchResto');
+  };
+
   return (
     <View style={Styles.mainContainer}>
       <BlueWrapper>
@@ -60,112 +58,82 @@ const Waits = ({navigation}: any) => {
         <View style={Styles.ImageWrapper}>
           <Image
             source={otjtr}
-            style={[
-              Styles.ImageStyle,
-              Platform.OS === 'ios'
-                ? {marginTop: height * 0.08}
-                : {marginTop: height * 0.04},
-            ]}
+            style={Styles.ImageStyle}
             resizeMode="contain"
           />
-          <TouchableOpacity
-            style={
-              Platform.OS == 'ios'
-                ? {marginTop: height * 0.1}
-                : {marginTop: height * 0.06}
-            }>
-            <Text style={{color: 'white', fontWeight: 'bold'}}>
-              Click me to get location
-            </Text>
+          <TouchableOpacity style={Styles.searchContainer}>
+            <Text style={Styles.locationText}>{String.location_text}</Text>
           </TouchableOpacity>
-          <View
-            style={[
-              {flexDirection: 'row', justifyContent: 'space-around'},
-              Platform.OS === 'ios'
-                ? {marginTop: height * 0.095}
-                : {marginTop: height * 0.05},
-            ]}>
+          <View style={Styles.walletContainer}>
             <TouchableOpacity onPress={walletModalHandler}>
               <Wallet
-                name="wallet-outline"
-                color="#FFFFFF"
+                name={Icon_Name.wallet}
+                color={Colors.White}
                 size={28}
-                style={{marginRight: 20}}
+                style={Styles.walletIcon}
               />
             </TouchableOpacity>
             <TouchableOpacity onPress={notificationModalHandle}>
-              <Bell name="bell-outline" color="#FFFFFF" size={28} />
+              <Bell name={Icon_Name.bell} color={Colors.White} size={28} />
             </TouchableOpacity>
           </View>
         </View>
-        <View
-          style={{
-            marginTop: Platform.OS === 'ios' ? 15 : 30,
-            alignItems: 'center',
-            justifyContent: 'space-around',
-            flexDirection: 'row',
-          }}>
-          <View
-            style={{
-              flexDirection: 'row',
-              width: '70%',
-              padding: Platform.OS === 'ios' ? 12 : 0,
-              borderWidth: 1,
-              borderColor: 'white',
-              borderRadius: 20,
-              justifyContent: 'space-between',
-              alignItems: 'center',
-              paddingHorizontal: 20,
-            }}>
+        <View style={Styles.searchCafeContainer}>
+          <View style={Styles.searchCafeSubContainer}>
             <TextInput
               placeholder="search for ’cafe’"
-              placeholderTextColor={'#FFFFFF'}
+              placeholderTextColor={Colors.White}
+              editable={false}
             />
-            <TouchableOpacity>
-              <Search name="search1" color={'#FFFFFF'} size={20} />
+            <TouchableOpacity onPress={searchHandle}>
+              <Search
+                name={Icon_Name.search_icon}
+                color={Colors.White}
+                size={20}
+              />
             </TouchableOpacity>
           </View>
           <TouchableOpacity>
-            <Calendar name="calendar-outline" color={'#FFFFFF'} size={28} />
+            <Calendar
+              name={Icon_Name.calendar}
+              color={Colors.White}
+              size={28}
+            />
           </TouchableOpacity>
           <TouchableOpacity>
-            <Search name="filter" color={'#FFFFFF'} size={28} />
+            <Search name={Icon_Name.filter} color={Colors.White} size={28} />
           </TouchableOpacity>
         </View>
         {/* </View> */}
       </BlueWrapper>
       <WhiteWrapper>
-        <ScrollView style={{width: '100%', marginBottom: 10, borderRadius: 20}}>
-          <View style={{width: '100%', alignItems: 'center'}}>
-            <View
-              style={{
-                flexDirection: 'row',
-                justifyContent: 'space-around',
-                width: '100%',
-                marginTop: 20,
-              }}>
+        <ScrollView style={Styles.scrollviewStyle}>
+          <View style={Styles.scrollviewSubContainer}>
+            <View style={Styles.buttonContainer}>
               <CustomButton
-                iconName={'format-list-bulleted'}
-                label={'LIST'}
+                iconName={Icon_Name.list}
+                label={String.list}
                 onClick={() => {
                   setSelected(false);
                 }}
-                style={{
-                  backgroundColor: selected ? Colors.White : Colors.SkyBlue,
-                  width: '45%',
-                }}
+                style={[
+                  Styles.listButton,
+                  {backgroundColor: selected ? Colors.White : Colors.SkyBlue},
+                ]}
                 textStyle={selected ? Colors.SkyBlue : Colors?.White}
               />
               <CustomButton
-                iconName={'map-marker-outline'}
-                label={'MAP'}
+                iconName={Icon_Name.map}
+                label={String.map}
                 onClick={() => {
                   setSelected(true);
                 }}
-                style={{
-                  backgroundColor: selected ? Colors.SkyBlue : Colors.White,
-                  width: '45%',
-                }}
+                style={[
+                  {
+                    backgroundColor: selected ? Colors.SkyBlue : Colors.White,
+                  },
+                  Styles.listButton,
+                ]}
                 textStyle={selected ? Colors?.White : Colors.SkyBlue}
               />
             </View>
@@ -212,20 +180,61 @@ const Waits = ({navigation}: any) => {
 export default Waits;
 
 const Styles = StyleSheet.create({
-  ImageStyle: {width: 50, height: 50},
+  ImageStyle: {
+    width: height * 0.065,
+    height: height * 0.065,
+    marginTop: Platform.OS === 'ios' ? height * 0.08 : height * 0.04,
+  },
   ImageWrapper: {
     flexDirection: 'row',
     justifyContent: 'space-between',
     marginHorizontal: 20,
   },
   mainContainer: {flex: 1},
-  container: {
-    width: 100,
-    height: 100,
-    borderRadius: 50,
-  },
   gradient: {
     flex: 1,
     borderRadius: 50,
+  },
+  searchContainer: {
+    marginTop: Platform.OS == 'ios' ? height * 0.1 : height * 0.06,
+  },
+  locationText: {color: 'white', fontWeight: 'bold'},
+  walletContainer: {
+    flexDirection: 'row',
+    justifyContent: 'space-around',
+    marginTop: Platform.OS === 'ios' ? height * 0.095 : height * 0.05,
+  },
+  walletIcon: {marginRight: height * 0.02},
+  searchCafeContainer: {
+    marginTop: Platform.OS === 'ios' ? 15 : 30,
+    alignItems: 'center',
+    justifyContent: 'space-around',
+    flexDirection: 'row',
+  },
+  searchCafeSubContainer: {
+    flexDirection: 'row',
+    width: '70%',
+    padding: Platform.OS === 'ios' ? 12 : 0,
+    borderWidth: 1,
+    borderColor: 'white',
+    borderRadius: 20,
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    paddingHorizontal: height * 0.02,
+  },
+  scrollviewStyle: {
+    width: '100%',
+    marginBottom: height * 0.01,
+    borderRadius: 20,
+  },
+  scrollviewSubContainer: {width: '100%', alignItems: 'center'},
+  buttonContainer: {
+    flexDirection: 'row',
+    justifyContent: 'space-around',
+    width: '100%',
+    marginTop: height * 0.04,
+  },
+  listButton: {
+    width: '45%',
   },
 });

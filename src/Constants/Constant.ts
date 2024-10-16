@@ -21,6 +21,14 @@ export const String = {
 
 export const Icon_Name = {
   upArraw: 'keyboard-arrow-up',
+  search_icon: 'search1',
+  timmer: 'timer-outline',
+  wallet: 'wallet-outline',
+  bell: 'bell-outline',
+  calendar: 'calendar-outline',
+  filter: 'filter',
+  list: 'format-list-bulleted',
+  map: 'map-marker-outline',
 };
 
 export const NotificationArray = [
@@ -38,5 +46,20 @@ export const NotificationArray = [
     imageName: ImagePath.Notification3,
     imageText: 'Lorem ipsum dolor sit amet consectetur adipiscing elit',
     imageDate: '23 July 2021',
+  },
+];
+
+export const Recent_Search = [
+  {
+    name: 'Parallax Restaur...',
+    value: 'Parallax Restaur...',
+  },
+  {
+    name: 'Disaster Cafe',
+    value: 'Disaster Cafe',
+  },
+  {
+    name: 'Dinner in the sky',
+    value: 'Dinner in the sky',
   },
 ];
