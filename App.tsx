@@ -10,6 +10,7 @@ import OtpScreen from './src/Domain/Auth/OtpScreen';
 import TermsCondition from './src/Domain/Auth/TermsCondition';
 import BottonNavigation from './src/Domain/Home/Screens/BottomNavigation';
 import SearchRestoScreen from './src/CommonComponents/SearchRestoScreen';
+import SearchLocation from './src/Domain/Home/Screens/SearchLocation';
 
 const App = () => {
   // const Tab = createBottomTabNavigator();
@@ -35,6 +36,11 @@ const App = () => {
         <Stack.Screen
           name="searchResto"
           component={SearchRestoScreen}
+          options={{headerShown: false}}
+        />
+        <Stack.Screen
+          name="searchlocation"
+          component={SearchLocation}
           options={{headerShown: false}}
         />
         <Stack.Screen

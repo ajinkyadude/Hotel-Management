@@ -7,4 +7,5 @@ export const String = {
   list: 'LIST',
   map: 'MAP',
   location_text: 'Click me to get location',
+  select_location: 'Select location',
 };

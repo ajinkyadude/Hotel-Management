@@ -15,7 +15,6 @@ import {Colors, Icon_Name, Recent_Search} from '../Constants/Constant';
 import {FontType} from '../Constants/FontType';
 import {String} from '../Constants/String';
 import Timmer from 'react-native-vector-icons/Ionicons';
-import {StatusBar} from 'react-native';
 
 const {height, width} = Dimensions.get('screen');
 const SearchRestoScreen = () => {
