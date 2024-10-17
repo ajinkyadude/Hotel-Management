@@ -6,12 +6,12 @@ import {
   Text,
   View,
 } from 'react-native';
-import BlueWrapper from './CommonComponents/BlueWrapper';
-import OtpLogo from '../../../src/Assets/OtpLogo.png';
-import WhiteWrapper from './CommonComponents/WhiteWrapper';
+import BlueWrapper from '../CommonComponents/BlueWrapper';
+import WhiteWrapper from '../CommonComponents/WhiteWrapper';
 import OTPTextInput from 'react-native-otp-textinput';
-import {Colors} from '../../Constants/Constant';
-import { String } from '../../Constants/String';
+import {Colors} from '../../../Constants/Constant';
+import {String} from '../../../Constants/String';
+import {ImagePath} from '../../../ImageConstant';
 
 const {height, width} = Dimensions.get('screen');
 
@@ -29,7 +29,7 @@ const OtpScreen = ({navigation}: any) => {
       <BlueWrapper>
         <View style={Styles.ImageWrapper}>
           <Image
-            source={OtpLogo}
+            source={ImagePath.OtpLogo}
             style={Styles.ImageStyle}
             resizeMode="contain"
           />
@@ -41,9 +41,7 @@ const OtpScreen = ({navigation}: any) => {
           <View style={Styles.subWrapper}>
             <Text style={Styles.welcomeText}>{String.digital_access}</Text>
             <View>
-              <Text style={Styles.subText}>
-                {String.digital_access_code}
-              </Text>
+              <Text style={Styles.subText}>{String.digital_access_code}</Text>
             </View>
 
             <View style={Styles.otpTextBoxWrapper}>
@@ -68,7 +66,7 @@ const Styles = StyleSheet.create({
   ImageStyle: {
     width: width * 0.24,
     height: height * 0.12,
-    marginTop: height * 0.08,
+    marginTop: height * 0.02,
   },
   mainContainer: {flex: 1},
   subWrapper: {marginTop: height * 0.04, marginHorizontal: width * 0.04},

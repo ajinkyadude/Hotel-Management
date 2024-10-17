@@ -121,7 +121,7 @@ const Style = StyleSheet.create({
     flexDirection: 'row',
     marginHorizontal: 20,
     alignItems: 'center',
-    marginTop: Platform.OS === 'ios' ? height * 0.08 : height * 0.04,
+    marginTop: Platform.OS === 'ios' ? height * 0.01 : height * 0.04,
   },
   select_location: {
     width: '100%',

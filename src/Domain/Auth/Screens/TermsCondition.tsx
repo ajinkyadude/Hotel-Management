@@ -5,27 +5,26 @@ import {
   ScrollView,
   StyleSheet,
   Text,
-  TextInput,
   TouchableOpacity,
   View,
 } from 'react-native';
-import BlueWrapper from './CommonComponents/BlueWrapper';
-import OtpLogo from '../../../src/Assets/OtpLogo.png';
-import WhiteWrapper from './CommonComponents/WhiteWrapper';
-import CustomTextInput from './CommonComponents/CustomTextInput';
-import {KeyboardAvoidingView} from 'react-native';
-import { useState } from 'react';
+import {useState} from 'react';
 import Check from 'react-native-vector-icons/MaterialCommunityIcons';
+import {ImagePath} from '../../../ImageConstant';
+import BlueWrapper from '../CommonComponents/BlueWrapper';
+import WhiteWrapper from '../CommonComponents/WhiteWrapper';
+import {Colors} from '../../../Constants/Constant';
+
+const {height} = Dimensions.get('screen');
 
 const TermsCondition = ({navigation}: any) => {
-
   const [check, SetCheck] = useState(false);
   return (
     <View style={Styles.mainContainer}>
       <BlueWrapper>
         <View style={Styles.ImageWrapper}>
           <Image
-            source={OtpLogo}
+            source={ImagePath.OtpLogo}
             style={Styles.ImageStyle}
             resizeMode="contain"
           />
@@ -66,12 +65,13 @@ const TermsCondition = ({navigation}: any) => {
                   <Check name="checkbox-marked" color={'#01C1E5'} size={20} />
                 </TouchableOpacity>
               ) : (
-                <TouchableOpacity onPress={() => {
+                <TouchableOpacity
+                  onPress={() => {
                     SetCheck(true);
-                    setTimeout(()=>{
-                        navigation.navigate('BottonNavigation');
-                    },2000)
-                    }}>
+                    setTimeout(() => {
+                      navigation.navigate('BottonNavigation');
+                    }, 2000);
+                  }}>
                   <Check
                     name="checkbox-blank-outline"
                     color={'#01C1E5'}
@@ -79,28 +79,36 @@ const TermsCondition = ({navigation}: any) => {
                   />
                 </TouchableOpacity>
               )}
-              <Text style={{marginLeft: 5}}>I agree to tearms & conditions.</Text>
+              <Text style={{marginLeft: 5}}>
+                I agree to tearms & conditions.
+              </Text>
             </View>
           </View>
         </ScrollView>
       </WhiteWrapper>
     </View>
-    // </KeyboardAvoidingView>
   );
 };
 
 export default TermsCondition;
 
 const Styles = StyleSheet.create({
-  ImageWrapper: {flex: 1, alignItems: 'center'},
-  ImageStyle: {width: 100, height: 100, marginTop: 70},
+  ImageWrapper: {
+    flex: 1,
+    alignItems: 'center',
+  },
+  ImageStyle: {
+    width: 100,
+    height: 100,
+    marginTop: Platform.OS == 'ios' ? height * 0.02 : height * 0.04,
+  },
   mainContainer: {flex: 1},
   subWrapper: {marginTop: 30, marginHorizontal: 20},
   welcomeText: {
-    color: '#01C1E5',
+    color: Colors.lightSkyBlue,
     fontWeight: 'bold',
     fontSize: 24,
     marginBottom: 15,
   },
-  subText: {color: '#8A8DA0'},
+  subText: {color: Colors.lightGreyArrow},
 });

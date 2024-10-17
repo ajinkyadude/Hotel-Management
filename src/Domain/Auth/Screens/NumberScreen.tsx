@@ -1,24 +1,23 @@
 import {
   Dimensions,
-  FlatList,
   Image,
-  Modal,
+  Platform,
   StyleSheet,
   Text,
   TextInput,
   TouchableOpacity,
   View,
 } from 'react-native';
-import BlueWrapper from './CommonComponents/BlueWrapper';
-import OtpLogo from '../../../src/Assets/OtpLogo.png';
-import WhiteWrapper from './CommonComponents/WhiteWrapper';
-import {NumberArray} from './Utils/DataObjects';
-import {Colors} from 'react-native/Libraries/NewAppScreen';
-import CustomDropdown from './CommonComponents/DropdownCustom';
 import {useState} from 'react';
 import Call from 'react-native-vector-icons/Ionicons';
 import Check from 'react-native-vector-icons/MaterialCommunityIcons';
-import CustomButton from './CommonComponents/CustomButton';
+import {ImagePath} from '../../../ImageConstant';
+import BlueWrapper from '../CommonComponents/BlueWrapper';
+import WhiteWrapper from '../CommonComponents/WhiteWrapper';
+import CustomButton from '../CommonComponents/CustomButton';
+import CustomDropdown from '../CommonComponents/DropdownCustom';
+import {NumberArray} from '../Utils/DataObjects';
+import {Colors} from '../../../Constants/Constant';
 
 const {width, height} = Dimensions.get('screen');
 const NumberScreen = ({navigation}: any) => {
@@ -43,7 +42,7 @@ const NumberScreen = ({navigation}: any) => {
       <BlueWrapper>
         <View style={Styles.ImageWrapper}>
           <Image
-            source={OtpLogo}
+            source={ImagePath.OtpLogo}
             style={Styles.ImageStyle}
             resizeMode="contain"
           />
@@ -116,18 +115,25 @@ export default NumberScreen;
 
 const Styles = StyleSheet.create({
   mainContainer: {flex: 1},
-  ImageWrapper: {flex: 1, alignItems: 'center'},
-  ImageStyle: {width: 100, height: 100, marginTop: 70},
+  ImageWrapper: {
+    flex: 1,
+    alignItems: 'center'
+  },
+  ImageStyle: {
+    width: 100,
+    height: 100,
+    marginTop: Platform.OS == 'ios' ? height * 0.015 : height * 0.04,
+  },
   subWrapper: {marginTop: 30, marginHorizontal: 20},
   welcomeText: {
-    color: '#01C1E5',
+    color: Colors.lightSkyBlue,
     fontWeight: 'bold',
     fontSize: 24,
     marginBottom: 15,
   },
-  subText: {color: '#8A8DA0'},
+  subText: {color: Colors.lightGreyArrow},
   initialNumber: {
-    backgroundColor: '#FFFFFF',
+    backgroundColor: Colors.White,
     height: 50,
     width: 80,
     borderRadius: 30,
@@ -140,7 +146,7 @@ const Styles = StyleSheet.create({
     marginTop: 20,
   },
   actualNumber: {
-    backgroundColor: '#FFFFFF',
+    backgroundColor: Colors.White,
     height: height * 0.06,
     width: height * 0.3,
     borderRadius: 30,

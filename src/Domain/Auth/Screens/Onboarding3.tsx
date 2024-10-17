@@ -7,9 +7,8 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native';
-import OnboardingOne from '../../../src/Assets/OnboardingOne.png';
-import OnboardingOne2 from '../../../src/Assets/OnboardingThree.png';
 import Arrow from 'react-native-vector-icons/AntDesign';
+import {ImagePath} from '../../../ImageConstant';
 
 const Onboarding3 = () => {
   const {width, height} = Dimensions.get('screen');
@@ -20,7 +19,7 @@ const Onboarding3 = () => {
         Platform.OS == 'ios' && {marginTop: 50},
       ]}>
       <Image
-        source={OnboardingOne}
+        source={ImagePath.OnboardingOne}
         style={{width: 100, height: 80, marginTop: 40}}
       />
       <View style={{position: 'absolute', right: 0, top: 0, padding: 20}}>
@@ -37,7 +36,7 @@ const Onboarding3 = () => {
           alignItems: 'center',
         }}>
         <Image
-          source={OnboardingOne2}
+          source={ImagePath.OnboardingOne_2}
           style={{width: width * 5, height: width * 0.5}}
           resizeMode="contain"
         />

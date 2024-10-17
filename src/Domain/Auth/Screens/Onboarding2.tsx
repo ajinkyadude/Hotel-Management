@@ -7,9 +7,8 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native';
-import OnboardingOne from '../../../src/Assets/OnboardingOne.png';
-import OnboardingOne2 from '../../../src/Assets/OnboardingTwo.png';
 import Arrow from 'react-native-vector-icons/AntDesign';
+import {ImagePath} from '../../../ImageConstant';
 
 interface CustomOnboarding2Props {
   nextHandle: (data: number) => void;
@@ -19,8 +18,8 @@ interface CustomOnboarding2Props {
 const Onboarding2 = ({nextHandle, navigation}: CustomOnboarding2Props) => {
   const {width, height} = Dimensions.get('screen');
   const nextNavigate = () => {
-    navigation.navigate('NumberScreen')
-  }
+    navigation.navigate('NumberScreen');
+  };
 
   return (
     <View
@@ -29,7 +28,7 @@ const Onboarding2 = ({nextHandle, navigation}: CustomOnboarding2Props) => {
         Platform.OS == 'ios' && {marginTop: 50},
       ]}>
       <Image
-        source={OnboardingOne}
+        source={ImagePath.OnboardingOne}
         style={{width: 100, height: 80, marginTop: 40}}
       />
       <View style={{position: 'absolute', right: 0, top: 0, padding: 20}}>
@@ -46,7 +45,7 @@ const Onboarding2 = ({nextHandle, navigation}: CustomOnboarding2Props) => {
           alignItems: 'center',
         }}>
         <Image
-          source={OnboardingOne2}
+          source={ImagePath.OnboardingOne_2}
           style={{width: width * 5, height: width * 0.5}}
           resizeMode="contain"
         />

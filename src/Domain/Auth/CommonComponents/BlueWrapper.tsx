@@ -1,14 +1,16 @@
-import { View } from "react-native";
-
+import {View} from 'react-native';
+import CustomStatusBar from '../../../CommonComponents/StatusBar/CustomStatusBar';
+import { Colors } from '../../../Constants/Constant';
 interface CustomBlueWrapper {
-    children: JSX.Element
+  children: JSX.Element;
 }
 
 const BlueWrapper = ({children}: CustomBlueWrapper) => {
   return (
-  <View style={{backgroundColor: '#01C0E3', flex: 1}}>
-    {children}
-  </View>
+    <View style={{backgroundColor: Colors.drakSkyBlue, flex: 1}}>
+      <CustomStatusBar />
+      {children}
+    </View>
   );
 };
 

@@ -9,7 +9,6 @@ import {
   View,
 } from 'react-native';
 import BlueWrapper from '../../Auth/CommonComponents/BlueWrapper';
-import otjtr from '../../../Assets/OtpLogo.png';
 import WhiteWrapper from '../../Auth/CommonComponents/WhiteWrapper';
 import {TouchableOpacity} from 'react-native-gesture-handler';
 import Wallet from 'react-native-vector-icons/Ionicons';
@@ -26,6 +25,7 @@ import ModalScreen from '../../../CommonComponents/Modal/Modal';
 import WalletScreen from '../../../CommonComponents/Modal/WalletScreen';
 import NotificationScreen from '../../../CommonComponents/Modal/NotificationScreen';
 import {String} from '../../../Constants/String';
+import {ImagePath} from '../../../ImageConstant';
 
 const {height} = Dimensions.get('screen');
 const Waits = ({navigation}: any) => {
@@ -57,7 +57,7 @@ const Waits = ({navigation}: any) => {
         {/* <View> */}
         <View style={Styles.ImageWrapper}>
           <Image
-            source={otjtr}
+            source={ImagePath.OtpLogo}
             style={Styles.ImageStyle}
             resizeMode="contain"
           />
@@ -183,12 +183,14 @@ const Styles = StyleSheet.create({
   ImageStyle: {
     width: height * 0.065,
     height: height * 0.065,
-    marginTop: Platform.OS === 'ios' ? height * 0.08 : height * 0.04,
+    // marginTop: Platform.OS === 'ios' ? height * 0.08 : height * 0.04,
   },
   ImageWrapper: {
     flexDirection: 'row',
     justifyContent: 'space-between',
     marginHorizontal: 20,
+    alignItems: 'center',
+    marginTop: Platform.OS == 'android' ? height * 0.03 : 0,
   },
   mainContainer: {flex: 1},
   gradient: {
@@ -196,13 +198,13 @@ const Styles = StyleSheet.create({
     borderRadius: 50,
   },
   searchContainer: {
-    marginTop: Platform.OS == 'ios' ? height * 0.1 : height * 0.06,
+    // marginTsop: Platform.OS == 'ios' ? height * 0.1 : height * 0.06,
   },
   locationText: {color: 'white', fontWeight: 'bold'},
   walletContainer: {
     flexDirection: 'row',
     justifyContent: 'space-around',
-    marginTop: Platform.OS === 'ios' ? height * 0.095 : height * 0.05,
+    // marginTop: Platform.OS === 'ios' ? height * 0.095 : height * 0.05,
   },
   walletIcon: {marginRight: height * 0.02},
   searchCafeContainer: {

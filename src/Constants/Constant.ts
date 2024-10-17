@@ -1,7 +1,9 @@
 import {ImagePath} from '../ImageConstant';
 
 export const Colors = {
+
   SkyBlue: '#01BFE3',
+  drakSkyBlue: '#01C0E3',
   lightSkyBlue: '#01C1E5',
   Grey: 'grey',
   White: '#FFFFFF',

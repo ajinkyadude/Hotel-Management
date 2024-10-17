@@ -9,9 +9,8 @@ import {
   TouchableWithoutFeedback,
   View,
 } from 'react-native';
-import OnboardingOne from '../../../src/Assets/OnboardingOne.png';
-import OnboardingOne2 from '../../../src/Assets/OnboardingOne_2.png';
 import Arrow from 'react-native-vector-icons/AntDesign';
+import {ImagePath} from '../../../ImageConstant';
 
 interface CustomOnboarding1Props {
   nextHandle: (data: number) => void;
@@ -25,7 +24,10 @@ const Onboarding1 = ({nextHandle, navigation}: CustomOnboarding1Props) => {
   return (
     <View
       style={[Styles.mainContainer, Platform.OS == 'ios' && {marginTop: 50}]}>
-      <Image source={OnboardingOne} style={Styles.onBoardingImageContainer} />
+      <Image
+        source={ImagePath.OnboardingOne}
+        style={Styles.onBoardingImageContainer}
+      />
       <View style={Styles.skipContainer}>
         <TouchableOpacity onPress={skipHandle}>
           <Text style={Styles.skipText}>Skip</Text>
@@ -33,7 +35,7 @@ const Onboarding1 = ({nextHandle, navigation}: CustomOnboarding1Props) => {
       </View>
       <View style={Styles.onBoardingTwoContainer}>
         <Image
-          source={OnboardingOne2}
+          source={ImagePath.OnboardingOne_2}
           style={Styles.onBoardingTwoImage}
           resizeMode="contain"
         />
@@ -45,9 +47,10 @@ const Onboarding1 = ({nextHandle, navigation}: CustomOnboarding1Props) => {
             </Text>
             <Text style={Styles.subText1}>do eiusmod tempor incididunt</Text>
             <TouchableOpacity
-              onPress={() => { 
-                console.log('presed')
-                nextHandle(1)}}
+              onPress={() => {
+                console.log('presed');
+                nextHandle(1);
+              }}
               style={Styles.touchContainer}>
               <Arrow name="arrowright" color="#01C0E3" size={38} />
             </TouchableOpacity>
@@ -85,7 +88,7 @@ const Styles = StyleSheet.create({
   onBoardingTwoContainer: {
     flex: 1,
     marginTop: 70,
-    alignItems: 'center'
+    alignItems: 'center',
   },
   onBoardingTwoImage: {width: width * 5, height: width * 0.5},
   blueWrapperContainer: {
@@ -97,7 +100,7 @@ const Styles = StyleSheet.create({
     position: 'absolute',
     marginBottom: 0,
     borderTopLeftRadius: 100,
-    zIndex: 10
+    zIndex: 10,
   },
   blueWrapperSubContainer: {
     alignItems: 'center',

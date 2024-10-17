@@ -76,7 +76,7 @@ const Style = StyleSheet.create({
     justifyContent: 'space-between',
     alignItems: 'center',
     paddingHorizontal: width * 0.06,
-    marginTop: Platform.OS == 'ios' ? height * 0.1 : height * 0.07,
+    marginTop: Platform.OS == 'ios' ? height * 0.02 : height * 0.05,
   },
   recentSearch: {
     fontFamily: FontType.Medium,

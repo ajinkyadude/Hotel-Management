@@ -82,31 +82,15 @@ const ProfileScreen = () => {
         <View style={Styles.ImageWrapper}>
           <Image
             source={otjtr}
-            style={[
-              Styles.ImageStyle,
-              Platform.OS === 'ios'
-                ? {marginTop: height * 0.08}
-                : {marginTop: height * 0.04},
-            ]}
+            style={Styles.ImageStyle}
             resizeMode="contain"
           />
-          <TouchableOpacity
-            style={
-              Platform.OS == 'ios'
-                ? {marginTop: height * 0.1}
-                : {marginTop: height * 0.06}
-            }>
+          <TouchableOpacity>
             <Text style={{color: 'white', fontWeight: 'bold'}}>
               Click me to get location
             </Text>
           </TouchableOpacity>
-          <View
-            style={[
-              {flexDirection: 'row', justifyContent: 'space-around'},
-              Platform.OS === 'ios'
-                ? {marginTop: height * 0.095}
-                : {marginTop: height * 0.05},
-            ]}>
+          <View style={{flexDirection: 'row', justifyContent: 'space-around'}}>
             <TouchableOpacity>
               <Wallet
                 name="wallet-outline"
@@ -185,6 +169,8 @@ const Styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     marginHorizontal: 20,
+    alignItems: 'center',
+    marginTop: Platform.OS == 'android' ? height * 0.03 : 0,
   },
   mainContainer: {flex: 1},
   profileStyle: {
@@ -194,7 +180,7 @@ const Styles = StyleSheet.create({
   profileContainer: {
     width: '100%',
     alignItems: 'center',
-    marginTop: Platform.OS == 'ios' ? height * 0.01 : height * 0.025 ,
+    marginTop: Platform.OS == 'ios' ? height * 0.01 : height * 0.025,
   },
   profileSubContainer: {
     width: '90%',

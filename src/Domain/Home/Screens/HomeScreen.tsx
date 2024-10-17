@@ -11,7 +11,6 @@ import {
 } from 'react-native';
 import BlueWrapper from '../../Auth/CommonComponents/BlueWrapper';
 // import OtpLogo from '../../../src/Assets/OtpLogo.png';
-import otjtr from '../../../Assets/OtpLogo.png';
 import WhiteWrapper from '../../Auth/CommonComponents/WhiteWrapper';
 import {TouchableOpacity} from 'react-native-gesture-handler';
 import Wallet from 'react-native-vector-icons/Ionicons';
@@ -37,24 +36,11 @@ const HomeScreen = ({navigation}: any) => {
         {/* <View> */}
         <View style={[Styles.ImageWrapper]}>
           <Image
-            source={otjtr}
-            style={[
-              Styles.ImageStyle,
-              Platform.OS === 'ios'
-                ? {marginTop: height * 0.08}
-                : {marginTop: height * 0.04},
-            ]}
+            source={ImagePath.OtpLogo}
+            style={[Styles.ImageStyle]}
             resizeMode="contain"
           />
-          <TouchableOpacity
-            style={
-              Platform.OS == 'ios'
-                ? {marginTop: height * 0.1}
-                : {marginTop: height * 0.06}
-            }>
-            {/* <Text style={{color: 'white', fontWeight: 'bold'}}>
-              Click me to get location
-            </Text> */}
+          <TouchableOpacity>
             <TouchableOpacity
               onPress={locationHandle}
               style={{alignItems: 'center', justifyContent: 'center'}}>
@@ -77,12 +63,7 @@ const HomeScreen = ({navigation}: any) => {
             </TouchableOpacity>
           </TouchableOpacity>
           <View
-            style={[
-              {flexDirection: 'row', justifyContent: 'space-around'},
-              Platform.OS === 'ios'
-                ? {marginTop: height * 0.095}
-                : {marginTop: height * 0.05},
-            ]}>
+            style={[{flexDirection: 'row', justifyContent: 'space-around'}]}>
             <Wallet
               name="wallet-outline"
               color="#FFFFFF"
@@ -174,6 +155,7 @@ const Styles = StyleSheet.create({
     justifyContent: 'space-between',
     marginHorizontal: 20,
     alignItems: 'center',
+    marginTop: Platform.OS == 'android' ? height * 0.03 : 0,
   },
   mainContainer: {flex: 1},
   container: {
