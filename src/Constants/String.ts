@@ -8,4 +8,9 @@ export const String = {
   map: 'MAP',
   location_text: 'Click me to get location',
   select_location: 'Select location',
+  landmark: 'search for area, landmark...',
+  current_location: 'Current location',
+  using_gps: 'Using GPS',
+  nearBy: 'Nearby locations',
+  recentText: 'Recent locations',
 };

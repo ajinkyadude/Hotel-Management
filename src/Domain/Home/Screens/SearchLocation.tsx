@@ -1,6 +1,7 @@
 import {
   Dimensions,
   Platform,
+  ScrollView,
   StyleSheet,
   Text,
   TextInput,
@@ -10,12 +11,17 @@ import {
 import BlueWrapper from '../../Auth/CommonComponents/BlueWrapper';
 import WhiteWrapper from '../../Auth/CommonComponents/WhiteWrapper';
 import Icon from 'react-native-vector-icons/Ionicons';
-import {Colors, Icon_Name} from '../../../Constants/Constant';
+import {
+  Colors,
+  Icon_Name,
+  NearbyLocationList,
+} from '../../../Constants/Constant';
 import {FontType} from '../../../Constants/FontType';
 import {String} from '../../../Constants/String';
 import Search from 'react-native-vector-icons/AntDesign';
 import Icon2 from 'react-native-vector-icons/MaterialIcons';
 import Icon3 from 'react-native-vector-icons/Entypo';
+import NearbyLocationCard from './NearbyLocationCard';
 
 const {height, width} = Dimensions.get('screen');
 
@@ -25,7 +31,7 @@ const SearchLocation = ({navigation}: any) => {
   };
 
   return (
-    <View style={{flex: 1}}>
+    <View style={Style.main}>
       <BlueWrapper>
         <View style={Style.mainContainer}>
           <TouchableOpacity onPress={backHandle}>
@@ -36,7 +42,7 @@ const SearchLocation = ({navigation}: any) => {
         <View style={Style.blueSubContainer}>
           <TouchableOpacity>
             <TextInput
-              placeholder="search for area, landmark..."
+              placeholder={String.landmark}
               placeholderTextColor={Colors.White}
               editable={false}
             />
@@ -51,63 +57,74 @@ const SearchLocation = ({navigation}: any) => {
         </View>
       </BlueWrapper>
       <WhiteWrapper>
-        <View style={{flex: 1, alignItems: 'center'}}>
-          <View
-            style={{
-              width: '90%',
-              height: '100%',
-            }}>
-            <View
-              style={{
-                width: '100%',
-                flexDirection: 'row',
-                justifyContent: 'space-between',
-                padding: 20,
-                borderRadius: 10,
-                backgroundColor: Colors.White,
-                marginVertical: 20,
-                shadowColor: 'black',
-                shadowRadius: 8,
-                shadowOffset: 10,
-                shadowOpacity: 0.1,
-              }}>
-              <View style={{flexDirection: 'row'}}>
-                <View
-                  style={{
-                    width: height * 0.04,
-                    height: height * 0.04,
-                    // backgroundColor: 'red',
-                    borderRadius: 20,
-                    //   backgroundColor: 'red',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    shadowColor: 'black',
-                    shadowRadius: 8,
-                    // shadowOffset: 10,
-                    shadowOpacity: 0.1,
-                  }}>
-                  <Icon2 name="gps-fixed" size={21} color={Colors.SkyBlue} />
+        <View style={Style.whiteWrapper}>
+          <ScrollView
+            showsVerticalScrollIndicator={false}
+            contentContainerStyle={Style.scrollViewContainer}>
+            <View style={Style.subWhiteContainer}>
+              <View style={Style.currentLocationContainer}>
+                <View style={Style.currentSubHandler}>
+                  <View style={Style.IconContainer}>
+                    <Icon2
+                      name={Icon_Name.gps}
+                      size={21}
+                      color={Colors.SkyBlue}
+                    />
+                  </View>
+                  <View>
+                    <Text style={Style.currentLocationText}>
+                      {String.current_location}
+                    </Text>
+                    <Text style={{color: Colors.lightGreyArrow}}>
+                      {String.using_gps}
+                    </Text>
+                  </View>
                 </View>
                 <View>
-                  <Text
-                    style={{
-                      color: Colors.SkyBlue,
-                      fontFamily: FontType.Medium,
-                    }}>
-                    Current location
-                  </Text>
-                  <Text style={{color: Colors.lightGreyArrow}}>Using GPS</Text>
+                  <Icon3
+                    name={Icon_Name.right_arrow}
+                    color={Colors.SkyBlue}
+                    size={28}
+                  />
                 </View>
               </View>
-              <View>
-                <Icon3
-                  name="chevron-small-right"
-                  color={Colors.SkyBlue}
-                  size={28}
-                />
+              <View style={Style.locationContainer}>
+                <Text style={Style.nearByText}>{String.nearBy}</Text>
+                {NearbyLocationList &&
+                  NearbyLocationList.map((item, index) => {
+                    return (
+                      <>
+                        <NearbyLocationCard
+                          head={item.name}
+                          text={item.value}
+                        />
+                        {index != NearbyLocationList.length - 1 && (
+                          <View style={Style.hrLine} />
+                        )}
+                      </>
+                    );
+                  })}
+              </View>
+              <View style={Style.gap} />
+              <View style={Style.locationContainer}>
+                <Text style={Style.nearByText}>{String.recentText}</Text>
+                {NearbyLocationList &&
+                  NearbyLocationList.map((item, index) => {
+                    return (
+                      <>
+                        <NearbyLocationCard
+                          head={item.name}
+                          text={item.value}
+                        />
+                        {index != NearbyLocationList.length - 1 && (
+                          <View style={Style.hrLine} />
+                        )}
+                      </>
+                    );
+                  })}
               </View>
             </View>
-          </View>
+          </ScrollView>
         </View>
       </WhiteWrapper>
     </View>
@@ -117,6 +134,7 @@ const SearchLocation = ({navigation}: any) => {
 export default SearchLocation;
 
 const Style = StyleSheet.create({
+  main: {flex: 1},
   mainContainer: {
     flexDirection: 'row',
     marginHorizontal: 20,
@@ -142,5 +160,63 @@ const Style = StyleSheet.create({
     alignItems: 'center',
     paddingHorizontal: width * 0.06,
     marginTop: Platform.OS == 'ios' ? height * 0.04 : height * 0.05,
+  },
+  whiteWrapper: {flex: 1, alignItems: 'center'},
+  scrollViewContainer: {
+    alignItems: 'center',
+    width: '100%',
+    paddingVertical: height * 0.01,
+    paddingBottom: height * 0.05,
+  },
+  subWhiteContainer: {
+    width: '90%',
+    height: '100%',
+  },
+  currentLocationContainer: {
+    width: '100%',
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    padding: height * 0.02,
+    borderRadius: 10,
+    backgroundColor: Colors.White,
+    marginVertical: height * 0.025,
+    shadowColor: 'black',
+    shadowRadius: 8,
+    shadowOpacity: 0.1,
+    elevation: 3,
+    alignItems: 'center',
+  },
+  currentSubHandler: {flexDirection: 'row'},
+  IconContainer: {
+    width: height * 0.04,
+    height: height * 0.04,
+    borderRadius: 20,
+    alignItems: 'center',
+    justifyContent: 'center',
+    shadowColor: 'black',
+    shadowRadius: 8,
+    shadowOpacity: 0.1,
+  },
+  currentLocationText: {
+    color: Colors.SkyBlue,
+    fontFamily: FontType.Medium,
+  },
+  locationContainer: {
+    borderRadius: 10,
+    backgroundColor: Colors.White,
+    padding: height * 0.024,
+    shadowColor: 'black',
+    shadowRadius: 8,
+    shadowOpacity: 0.1,
+    elevation: 2,
+  },
+  nearByText: {fontFamily: FontType.Medium, fontSize: 16},
+  hrLine: {
+    borderWidth: 0.3,
+    borderColor: Colors.lightGreyArrow,
+    marginTop: height * 0.009,
+  },
+  gap: {
+    marginTop: height * 0.024,
   },
 });

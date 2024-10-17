@@ -1,7 +1,6 @@
 import {ImagePath} from '../ImageConstant';
 
 export const Colors = {
-
   SkyBlue: '#01BFE3',
   drakSkyBlue: '#01C0E3',
   lightSkyBlue: '#01C1E5',
@@ -32,6 +31,8 @@ export const Icon_Name = {
   list: 'format-list-bulleted',
   map: 'map-marker-outline',
   back: 'chevron-back',
+  gps: 'gps-fixed',
+  right_arrow: 'chevron-small-right',
 };
 
 export const NotificationArray = [
@@ -122,5 +123,20 @@ export const Array = [
     Title: 'Paris in The Sky',
     subText: '4814 Bingamon Road Warrensville Heights, OH 44128',
     ImageName: ImagePath.Paris,
+  },
+];
+
+export const NearbyLocationList = [
+  {
+    name: 'Chao Street',
+    value: 'Kaohsiung,Taipei, Taiwan',
+  },
+  {
+    name: 'Chao Street',
+    value: 'Kaohsiung,Taipei, Taiwan',
+  },
+  {
+    name: 'Chao Street',
+    value: 'Kaohsiung,Taipei, Taiwan',
   },
 ];

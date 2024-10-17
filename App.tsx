@@ -18,21 +18,21 @@ const App = () => {
   return (
     <NavigationContainer>
       <Stack.Navigator>
-        {/* <Stack.Screen
+        <Stack.Screen
           name="BottonNavigation"
           component={BottonNavigation}
           options={{headerShown: false}}
-        /> */}
+        />
         <Stack.Screen
           name="Splash"
           component={SplashScreen}
           options={{headerShown: false}}
         />
-        <Stack.Screen
+        {/* <Stack.Screen
           name="BottonNavigation"
           component={BottonNavigation}
           options={{headerShown: false}}
-        />
+        /> */}
         <Stack.Screen
           name="searchResto"
           component={SearchRestoScreen}
