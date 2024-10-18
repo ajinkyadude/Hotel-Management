@@ -35,6 +35,14 @@
 	<string/>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
+	<!-- # Location -->
+	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+  	<string>App wants to use device location.</string>
+  	<key>NSLocationAlwaysUsageDescription</key>
+  	<string>App wants to use device location.</string>
+  	<key>NSLocationWhenInUseUsageDescription</key>
+  	<string>App wants to use device location.</string>
+
 	<key>UIRequiredDeviceCapabilities</key>
 	<array>
 		<string>armv7</string>

@@ -22,12 +22,89 @@ import Search from 'react-native-vector-icons/AntDesign';
 import Icon2 from 'react-native-vector-icons/MaterialIcons';
 import Icon3 from 'react-native-vector-icons/Entypo';
 import NearbyLocationCard from './NearbyLocationCard';
+import {check, request, RESULTS, PERMISSIONS} from 'react-native-permissions';
+import {useEffect, useState} from 'react';
+import Geolocation from '@react-native-community/geolocation';
 
 const {height, width} = Dimensions.get('screen');
 
 const SearchLocation = ({navigation}: any) => {
+  const [locationPer, setLocationPer] = useState('');
+  const [geoLocation, setGeoLocation] = useState(false);
   const backHandle = () => {
     navigation.goBack();
+  };
+  const getCordinates = () => {
+    if (locationPer == RESULTS.GRANTED) {
+      Geolocation.getCurrentPosition(
+        position => {
+          console.log(position);
+          setGeoLocation(position);
+        },
+        error => {
+          // See error code charts below.
+          console.log(error.code, error.message);
+          setGeoLocation(false);
+        },
+        {enableHighAccuracy: true, timeout: 15000, maximumAge: 10000},
+      );
+    }
+  };
+
+  useEffect(() => {
+    if (locationPer == RESULTS.GRANTED) {
+      getCordinates();
+    }
+  }, [locationPer]);
+  const requstHandler = async () => {
+    try {
+      const location = await check(
+        Platform.OS === 'ios'
+          ? PERMISSIONS.IOS.LOCATION_ALWAYS
+          : PERMISSIONS.ANDROID.ACCESS_FINE_LOCATION,
+      );
+      setLocationPer(location);
+      getCordinates();
+      Platform.OS === 'ios'
+        ? console.log(' IOS  ***  ' + location)
+        : console.log(' android   **** ' + location);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  useEffect(() => {
+    requstHandler();
+    // request()
+  }, []);
+
+  useEffect(() => {
+    if (locationPer !== RESULTS.GRANTED) {
+      handleGrantPermission();
+    }
+  }, [locationPer]);
+
+  const handleGrantPermission = async () => {
+    if (locationPer != RESULTS.GRANTED) {
+      const permissionResult = await request(
+        Platform.OS === 'ios'
+          ? PERMISSIONS.IOS.LOCATION_ALWAYS
+          : PERMISSIONS.ANDROID.ACCESS_FINE_LOCATION,
+      );
+      console.log(' permissionResult  ', permissionResult);
+
+      setLocationPer(permissionResult);
+      getCordinates();
+    }
+  };
+
+  console.log(' location  **  ', locationPer);
+
+  const MapNavigateHandle = () => {
+    navigation.navigate('GeoLocationScreen', {
+      latitude: geoLocation?.coords?.latitude,
+      longitude: geoLocation?.coords?.longitude,
+    });
   };
 
   return (
@@ -62,7 +139,9 @@ const SearchLocation = ({navigation}: any) => {
             showsVerticalScrollIndicator={false}
             contentContainerStyle={Style.scrollViewContainer}>
             <View style={Style.subWhiteContainer}>
-              <View style={Style.currentLocationContainer}>
+              <TouchableOpacity
+                style={Style.currentLocationContainer}
+                onPress={MapNavigateHandle}>
                 <View style={Style.currentSubHandler}>
                   <View style={Style.IconContainer}>
                     <Icon2
@@ -87,7 +166,7 @@ const SearchLocation = ({navigation}: any) => {
                     size={28}
                   />
                 </View>
-              </View>
+              </TouchableOpacity>
               <View style={Style.locationContainer}>
                 <Text style={Style.nearByText}>{String.nearBy}</Text>
                 {NearbyLocationList &&

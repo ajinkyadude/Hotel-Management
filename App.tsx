@@ -11,6 +11,7 @@ import SearchRestoScreen from './src/CommonComponents/SearchRestoScreen';
 import SearchLocation from './src/Domain/Home/Screens/SearchLocation';
 import NumberScreen from './src/Domain/Auth/Screens/NumberScreen';
 import TermsCondition from './src/Domain/Auth/Screens/TermsCondition';
+import MapScreen from './src/Domain/Home/Screens/MapScreen';
 
 const App = () => {
   // const Tab = createBottomTabNavigator();
@@ -64,11 +65,11 @@ const App = () => {
           component={TermsCondition}
           options={{headerShown: false}}
         />
-        {/* <Stack.Screen
-          name="BottonNavigation"
-          component={BottonNavigation}
+        <Stack.Screen
+          name="GeoLocationScreen"
+          component={MapScreen}
           options={{headerShown: false}}
-        /> */}
+        />
       </Stack.Navigator>
     </NavigationContainer>
   );
