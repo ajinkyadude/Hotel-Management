@@ -11,7 +11,6 @@ import {
 } from 'react-native';
 import BlueWrapper from '../../Auth/CommonComponents/BlueWrapper';
 // import OtpLogo from '../../../src/Assets/OtpLogo.png';
-import otjtr from '../../../Assets/OtpLogo.png';
 import WhiteWrapper from '../../Auth/CommonComponents/WhiteWrapper';
 import {TouchableOpacity} from 'react-native-gesture-handler';
 import Wallet from 'react-native-vector-icons/Ionicons';
@@ -19,111 +18,52 @@ import Bell from 'react-native-vector-icons/MaterialCommunityIcons';
 import Search from 'react-native-vector-icons/AntDesign';
 import {ImagePath} from '../../../ImageConstant';
 import CardComponent from '../Components/CardComponent';
-import {Colors} from '../../../Constants/Constant';
-import CustomButton from '../../Auth/CommonComponents/CustomButton';
+import {Array, Colors} from '../../../Constants/Constant';
 import HotelCard from '../Components/HotelCard';
-
-interface RootStackParamList {
-  HomeScreen: undefined; // Optional: If Home screen doesn't need params
-  // Other screens in your root stack (if any)
-}
-interface HomeProps extends BottomTabNavigationProp<any, 'HomeScreen'> {
-  // Other props specific to your Home screen
-}
+import Icon from 'react-native-vector-icons/Ionicons';
+import {FontType} from '../../../Constants/FontType';
 const {height, width} = Dimensions.get('screen');
 const HomeScreen = ({navigation}: any) => {
   const ClickHandle = () => {};
 
-  const Array = [
-    {
-      Title: 'Dinner in The Sky',
-      subText: '4814 Bingamon Road Warrensville Heights, OH 44128',
-      ImageName: ImagePath.WaitsScreen1,
-    },
-    {
-      Title: 'Dinner in The Bath',
-      subText: 'chimanpura peth, satara',
-      ImageName: ImagePath.Girl,
-    },
-    {
-      Title: 'The Fun Station',
-      subText: '4814 Bingamon Road Warrensville Heights, OH 44128',
-      ImageName: ImagePath.Golf,
-    },
-    {
-      Title: 'The Disaster Cafe',
-      subText: '4814 Bingamon Road Warrensville Heights, OH 44128',
-      ImageName: ImagePath.Chair,
-    },
-    {
-      Title: 'Del Posto',
-      subText: '4814 Bingamon Road Warrensville Heights, OH 44128',
-      ImageName: ImagePath.Lest,
-    },
-    {
-      Title: 'Comedy knockout',
-      subText: '4814 Bingamon Road Warrensville Heights, OH 44128',
-      ImageName: ImagePath.Song,
-    },
-    {
-      Title: 'Parallax Restaurant',
-      subText: '4814 Bingamon Road Warrensville Heights, OH 44128',
-      ImageName: ImagePath.Veg,
-    },
-    {
-      Title: 'Parallax Restaurant',
-      subText: '4814 Bingamon Road Warrensville Heights, OH 44128',
-      ImageName: ImagePath.Cafe,
-    },
-    {
-      Title: 'Spa and Wellness',
-      subText: '4814 Bingamon Road Warrensville Heights, OH 44128',
-      ImageName: ImagePath.Spa,
-    },
-    {
-      Title: 'Sequia Hotel',
-      subText: '4814 Bingamon Road Warrensville Heights, OH 44128',
-      ImageName: ImagePath.Lodge,
-    },
-    {
-      Title: 'Paris in The Sky',
-      subText: '4814 Bingamon Road Warrensville Heights, OH 44128',
-      ImageName: ImagePath.Paris,
-    },
-  ];
+  const locationHandle = () => {
+    navigation.navigate('searchlocation');
+  };
 
   return (
     <View style={Styles.mainContainer}>
       <BlueWrapper>
         {/* <View> */}
-        <View style={Styles.ImageWrapper}>
+        <View style={[Styles.ImageWrapper]}>
           <Image
-            source={otjtr}
-            style={[
-              Styles.ImageStyle,
-              Platform.OS === 'ios'
-                ? {marginTop: height * 0.08}
-                : {marginTop: height * 0.04},
-            ]}
+            source={ImagePath.OtpLogo}
+            style={[Styles.ImageStyle]}
             resizeMode="contain"
           />
-          <TouchableOpacity
-            style={
-              Platform.OS == 'ios'
-                ? {marginTop: height * 0.1}
-                : {marginTop: height * 0.06}
-            }>
-            <Text style={{color: 'white', fontWeight: 'bold'}}>
-              Click me to get location
-            </Text>
+          <TouchableOpacity>
+            <TouchableOpacity
+              onPress={locationHandle}
+              style={{alignItems: 'center', justifyContent: 'center'}}>
+              <View style={{flexDirection: 'row', alignItems: 'center'}}>
+                <Icon name="location" size={21} color={Colors.White} />
+                <Text
+                  style={{color: Colors.White, fontFamily: FontType.Medium}}>
+                  Chao Street
+                </Text>
+                <Icon name="chevron-down" size={21} color={Colors.White} />
+              </View>
+              <Text
+                style={{
+                  color: Colors.White,
+                  fontFamily: FontType.Light,
+                  fontSize: 12,
+                }}>
+                Kaohsiung,Taipei, Taiwan
+              </Text>
+            </TouchableOpacity>
           </TouchableOpacity>
           <View
-            style={[
-              {flexDirection: 'row', justifyContent: 'space-around'},
-              Platform.OS === 'ios'
-                ? {marginTop: height * 0.095}
-                : {marginTop: height * 0.05},
-            ]}>
+            style={[{flexDirection: 'row', justifyContent: 'space-around'}]}>
             <Wallet
               name="wallet-outline"
               color="#FFFFFF"
@@ -214,6 +154,8 @@ const Styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     marginHorizontal: 20,
+    alignItems: 'center',
+    marginTop: Platform.OS == 'android' ? height * 0.03 : 0,
   },
   mainContainer: {flex: 1},
   container: {

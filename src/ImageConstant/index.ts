@@ -18,6 +18,24 @@ import Cafe from '../Assets/Cafe.png';
 import Spa from '../Assets/Spa.png';
 import Lodge from '../Assets/Lodge.png';
 import Paris from '../Assets/Paris.png';
+import Profile from '../Assets/ProfileImage.png';
+import QrCode from '../Assets/QrCode.png';
+import MyProfile from '../Assets/MyProfile.png';
+import Favourites from '../Assets/Favourites.png';
+import Message from '../Assets/Message.png';
+import Wallet from '../Assets/Wallet.png';
+import TransactionIcon from '../Assets/TransactionIcon.png';
+import Payment from '../Assets/Payment.png';
+import ProfileStar from '../Assets/ProfileStar.png';
+import Settings from '../Assets/Settings.png';
+import Wallet2 from '../Assets/Wallet2.png';
+import Notification1 from '../Assets/Notification_1.png';
+import Notification2 from '../Assets/Notification_2.png';
+import Notification3 from '../Assets/Notification_3.png';
+import Splash from '../Assets/Splash.png';
+import OnboardingOne from '../Assets/OnboardingOne.png';
+import OnboardingOne_2 from '../Assets/OnboardingOne_2.png';
+import OtpLogo from '../Assets/OtpLogo.png';
 
 export const ImagePath = {
   SellImage,
@@ -39,5 +57,23 @@ export const ImagePath = {
   Cafe,
   Spa,
   Lodge,
-  Paris
+  Paris,
+  Profile,
+  QrCode,
+  MyProfile,
+  Favourites,
+  Message,
+  Wallet,
+  TransactionIcon,
+  Payment,
+  ProfileStar,
+  Settings,
+  Wallet2,
+  Notification1,
+  Notification2,
+  Notification3,
+  Splash,
+  OnboardingOne,
+  OnboardingOne_2,
+  OtpLogo,
 };

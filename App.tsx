@@ -1,32 +1,47 @@
 import {Image, View} from 'react-native';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
-import SplashScreen from './src/Domain/Auth/SplashScreen';
+import SplashScreen from './src/Domain/Auth/Screens/SplashScreen';
 import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
-import Onboarding1 from './src/Domain/Auth/Onboarding1';
-import OnboardingCarousel from './src/Domain/Auth/OnboardingCarousel';
-import NumberScreen from './src/Domain/Auth/NumberScreen';
-import OtpScreen from './src/Domain/Auth/OtpScreen';
-import TermsCondition from './src/Domain/Auth/TermsCondition';
+import Onboarding1 from './src/Domain/Auth/Screens/Onboarding1';
+import OnboardingCarousel from './src/Domain/Auth/Screens/OnboardingCarousel';
+import OtpScreen from './src/Domain/Auth/Screens/OtpScreen';
 import BottonNavigation from './src/Domain/Home/Screens/BottomNavigation';
+import SearchRestoScreen from './src/CommonComponents/SearchRestoScreen';
+import SearchLocation from './src/Domain/Home/Screens/SearchLocation';
+import NumberScreen from './src/Domain/Auth/Screens/NumberScreen';
+import TermsCondition from './src/Domain/Auth/Screens/TermsCondition';
+import MapScreen from './src/Domain/Home/Screens/MapScreen';
 
 const App = () => {
   // const Tab = createBottomTabNavigator();
   const Stack = createStackNavigator();
   return (
     <NavigationContainer>
-      {/* <Tab.Navigator>
-        <Tab.Screen name="Splash" component={SplashScreen} options={{headerShown: false}} />
-      </Tab.Navigator> */}
       <Stack.Navigator>
-      <Stack.Screen
+        <Stack.Screen
+          name="BottonNavigation"
+          component={BottonNavigation}
+          options={{headerShown: false}}
+        />
+        <Stack.Screen
           name="Splash"
           component={SplashScreen}
           options={{headerShown: false}}
         />
-      <Stack.Screen
+        {/* <Stack.Screen
           name="BottonNavigation"
           component={BottonNavigation}
+          options={{headerShown: false}}
+        /> */}
+        <Stack.Screen
+          name="searchResto"
+          component={SearchRestoScreen}
+          options={{headerShown: false}}
+        />
+        <Stack.Screen
+          name="searchlocation"
+          component={SearchLocation}
           options={{headerShown: false}}
         />
         <Stack.Screen
@@ -50,11 +65,11 @@ const App = () => {
           component={TermsCondition}
           options={{headerShown: false}}
         />
-        {/* <Stack.Screen
-          name="BottonNavigation"
-          component={BottonNavigation}
+        <Stack.Screen
+          name="GeoLocationScreen"
+          component={MapScreen}
           options={{headerShown: false}}
-        /> */}
+        />
       </Stack.Navigator>
     </NavigationContainer>
   );

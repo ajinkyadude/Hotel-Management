@@ -7,4 +7,5 @@ module.exports = {
       unstable_reactLegacyComponentNames: ['AIRMap'],
     },
   },
+  assets: ['./src/Assets/fonts']
 };
