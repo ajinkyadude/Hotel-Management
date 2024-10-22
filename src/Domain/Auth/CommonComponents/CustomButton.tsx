@@ -24,7 +24,7 @@ const CustomButton = ({
           width: '100%',
           backgroundColor: '#01C0E3',
           alignItems: 'center',
-          paddingVertical: 15,
+          paddingVertical: 13,
           borderRadius: 25,
         },
         style,

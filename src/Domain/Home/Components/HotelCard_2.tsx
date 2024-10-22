@@ -19,13 +19,15 @@ interface HotelCard {
 }
 
 const {height, width} = Dimensions.get('screen');
-const HotelCard = ({Title, subText, ImageName}: HotelCard) => {
+const HotelCard_2 = ({
+  Title,
+  subText,
+  ImageName
+}: HotelCard) => {
   const ClickHandle = () => {};
   const [touched, setTouched] = useState(false);
   return (
     <View style={Styles.mainContainer}>
-      <View style={Styles.leftCurve} />
-      <View style={Styles.rightCurve} />
       <View style={Styles.subContainer}>
         <TouchableOpacity
           onPress={() => {
@@ -54,14 +56,7 @@ const HotelCard = ({Title, subText, ImageName}: HotelCard) => {
             <Text style={Styles.subText}>{subText}</Text>
           </View>
         </View>
-
-        <View style={Styles.dashViewContainer}>
-          <View style={Styles.dashViewSubContainer}>
-            <View style={Styles.dashViewSubContainer2}>
-              <View style={Styles.dashView} />
-            </View>
-          </View>
-        </View>
+        {/* <Text style={{color: '#4CAF74', fontWeight: 'bold', fontSize: 20, position: 'absolute', zIndex: 10, marginLeft: 20}}>4</Text> */}
         <View style={Styles.bottomContainer}>
           <View style={Styles.bottomSubContainer}>
             <Image
@@ -90,7 +85,7 @@ const HotelCard = ({Title, subText, ImageName}: HotelCard) => {
   );
 };
 
-export default HotelCard;
+export default HotelCard_2;
 
 const Styles = StyleSheet.create({
   mainContainer: {
@@ -125,8 +120,8 @@ const Styles = StyleSheet.create({
     borderRadius: 10,
   },
   largeImage: {
-    width: height * 0.4,
-    height: height * 0.17,
+    width: height * 0.35,
+    height: height * 0.15,
   },
   textContainer: {
     padding: 10,
@@ -138,17 +133,16 @@ const Styles = StyleSheet.create({
   },
   subTextContainer: {
     flexDirection: 'row',
-    marginVertical: height * 0.01,
+    marginTop: height * 0.01,
     alignItems: 'center',
   },
   mapImageContainer: {
     width: 25,
     height: 25,
-    marginVertical: 10,
   },
   subText: {
     color: Colors.Grey,
-    width: height * 0.33,
+    width: height * 0.28,
     marginLeft: height * 0.01,
   },
   dashViewContainer: {
@@ -175,19 +169,19 @@ const Styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
-    marginBottom: 5,
+    marginBottom: 7,
   },
   bottomSubContainer: {
     padding: 10,
     flexDirection: 'row',
   },
   BottomImageContainer: {
-    width: 40,
-    height: 40,
+    width: 30,
+    height: 30,
   },
   bottomImageContainer2: {
-    width: 40,
-    height: 40,
+    width: 30,
+    height: 30,
     marginHorizontal: 10,
   },
   BottomButtonContainer: {
