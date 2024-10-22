@@ -53,6 +53,7 @@ const SearchLocation = ({navigation}: any) => {
 
   useEffect(() => {
     if (locationPer == RESULTS.GRANTED) {
+        
       getCordinates();
     }
   }, [locationPer]);
