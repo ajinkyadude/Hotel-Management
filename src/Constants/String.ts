@@ -13,4 +13,7 @@ export const String = {
   using_gps: 'Using GPS',
   nearBy: 'Nearby locations',
   recentText: 'Recent locations',
+  sale: 'SALE',
+  purchase: 'PURCHASED',
+  request: 'REQUEST',
 };

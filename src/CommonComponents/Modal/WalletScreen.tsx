@@ -4,6 +4,7 @@ import {
   Platform,
   StyleSheet,
   Text,
+  TouchableWithoutFeedback,
   View,
 } from 'react-native';
 import {ImagePath} from '../../ImageConstant';
@@ -15,34 +16,36 @@ const {height, width} = Dimensions.get('screen');
 
 const WalletScreen = () => {
   return (
-    <View style={Style.subContainer}>
-      <View style={Style.headContainer}>
-        <Text style={Style.headingStyle}>{String.balanceText}</Text>
-        <View style={Style.headPartTwo}>
-          <View style={Style.walletContainer}>
-            <Image source={ImagePath.Wallet2} style={Style.imageStyle} />
-            <Text style={Style.priceStyle}>{String.balanceAmount}</Text>
+    <TouchableWithoutFeedback>
+      <View style={Style.subContainer}>
+        <View style={Style.headContainer}>
+          <Text style={Style.headingStyle}>{String.balanceText}</Text>
+          <View style={Style.headPartTwo}>
+            <View style={Style.walletContainer}>
+              <Image source={ImagePath.Wallet2} style={Style.imageStyle} />
+              <Text style={Style.priceStyle}>{String.balanceAmount}</Text>
+            </View>
+            <View style={Style.withdrawButtonContainer}>
+              <CustomButton
+                label={String.withdrawText}
+                onClick={() => {}}
+                style={Style.withdrawButtonStyle}
+              />
+            </View>
           </View>
-          <View style={Style.withdrawButtonContainer}>
-            <CustomButton
-              label={String.withdrawText}
-              onClick={() => {}}
-              style={Style.withdrawButtonStyle}
-            />
+          <View style={Style.submitButtonContainer}>
+            <CustomButton label={String.Add_Amount} onClick={() => {}} />
           </View>
         </View>
-        <View style={Style.submitButtonContainer}>
-          <CustomButton label={String.Add_Amount} onClick={() => {}} />
+        <View style={Style.upArrowStyle}>
+          <Arrow
+            name={Icon_Name.upArraw}
+            size={33}
+            color={Colors.lightGreyArrow}
+          />
         </View>
       </View>
-      <View style={Style.upArrowStyle}>
-        <Arrow
-          name={Icon_Name.upArraw}
-          size={33}
-          color={Colors.lightGreyArrow}
-        />
-      </View>
-    </View>
+    </TouchableWithoutFeedback>
   );
 };
 
@@ -50,7 +53,7 @@ export default WalletScreen;
 
 const Style = StyleSheet.create({
   subContainer: {
-    backgroundColor: Colors.lightGrey,
+    backgroundColor: 'blue',
     height: Platform.OS == 'ios' ? '28%' : '31%',
     borderRadius: 15,
   },

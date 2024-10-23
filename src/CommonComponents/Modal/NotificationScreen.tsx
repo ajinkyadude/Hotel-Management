@@ -4,6 +4,7 @@ import {
   Platform,
   StyleSheet,
   Text,
+  TouchableWithoutFeedback,
   View,
 } from 'react-native';
 import {Colors, Icon_Name, NotificationArray} from '../../Constants/Constant';
@@ -16,26 +17,28 @@ const {height, width} = Dimensions.get('screen');
 
 const NotificationScreen = () => {
   return (
-    <View style={Style.subContainer}>
-      <View style={Style.headTextContainer}>
-        <Text style={Style.notificationText}>{String.notification}</Text>
-        <Text style={Style.seeAllText}>{String.See_All}</Text>
+    <TouchableWithoutFeedback>
+      <View style={Style.subContainer}>
+        <View style={Style.headTextContainer}>
+          <Text style={Style.notificationText}>{String.notification}</Text>
+          <Text style={Style.seeAllText}>{String.See_All}</Text>
+        </View>
+        <View style={Style.headContainer}>
+          {NotificationArray &&
+            NotificationArray.length > 0 &&
+            NotificationArray.map((item, index) => {
+              return <NotificationCard item={item} />;
+            })}
+        </View>
+        <View style={Style.upArrowStyle}>
+          <Arrow
+            name={Icon_Name.upArraw}
+            size={33}
+            color={Colors.lightGreyArrow}
+          />
+        </View>
       </View>
-      <View style={Style.headContainer}>
-        {NotificationArray &&
-          NotificationArray.length > 0 &&
-          NotificationArray.map((item, index) => {
-            return <NotificationCard item={item} />;
-          })}
-      </View>
-      <View style={Style.upArrowStyle}>
-        <Arrow
-          name={Icon_Name.upArraw}
-          size={33}
-          color={Colors.lightGreyArrow}
-        />
-      </View>
-    </View>
+    </TouchableWithoutFeedback>
   );
 };
 

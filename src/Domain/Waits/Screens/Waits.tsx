@@ -1,5 +1,6 @@
 import {
   Dimensions,
+  FlatList,
   Image,
   Platform,
   ScrollView,
@@ -26,12 +27,13 @@ import WalletScreen from '../../../CommonComponents/Modal/WalletScreen';
 import NotificationScreen from '../../../CommonComponents/Modal/NotificationScreen';
 import {String} from '../../../Constants/String';
 import {ImagePath} from '../../../ImageConstant';
+import HotelCard_2 from '../../Home/Components/HotelCard_2';
+import WaitsMapScreen from './WaitsMapScreen';
 
 const {height} = Dimensions.get('screen');
 const Waits = ({navigation}: any) => {
   const ClickHandle = () => {};
   const [selected, setSelected] = useState(false);
-  const [isFocus, setIsFocus] = useState(false);
   const [modalVisible, setModalVisible] = useState(false);
   const [notModal, setNotModal] = useState<boolean>(false);
   const walletModalHandler = () => {
@@ -137,18 +139,9 @@ const Waits = ({navigation}: any) => {
                 textStyle={selected ? Colors?.White : Colors.SkyBlue}
               />
             </View>
-            {/* <MapView
-              style={{width: 100, height: 100}}
-              //specify our coordinates.
-              initialRegion={{
-                latitude: 37.78825,
-                longitude: -122.4324,
-                latitudeDelta: 0.0922,
-                longitudeDelta: 0.0421,
-              }}
-            /> */}
-            {Array &&
-              Array.length > 0 &&
+            {selected ? (
+              <WaitsMapScreen />
+            ) : (
               Array.map(item => {
                 return (
                   <HotelCard
@@ -157,7 +150,8 @@ const Waits = ({navigation}: any) => {
                     ImageName={item?.ImageName}
                   />
                 );
-              })}
+              })
+            )}
           </View>
         </ScrollView>
       </WhiteWrapper>
@@ -226,7 +220,7 @@ const Styles = StyleSheet.create({
   },
   scrollviewStyle: {
     width: '100%',
-    marginBottom: height * 0.01,
+    marginVertical: height * 0.01,
     borderRadius: 20,
   },
   scrollviewSubContainer: {width: '100%', alignItems: 'center'},
@@ -234,7 +228,7 @@ const Styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-around',
     width: '100%',
-    marginTop: height * 0.04,
+    marginTop: height * 0.02,
   },
   listButton: {
     width: '45%',
