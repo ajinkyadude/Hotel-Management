@@ -12,6 +12,7 @@ import SearchLocation from './src/Domain/Home/Screens/SearchLocation';
 import NumberScreen from './src/Domain/Auth/Screens/NumberScreen';
 import TermsCondition from './src/Domain/Auth/Screens/TermsCondition';
 import MapScreen from './src/Domain/Home/Screens/MapScreen';
+import CardDetailsScreen from './src/CommonComponents/WaitDetails/CardDetailsScreen';
 
 const App = () => {
   // const Tab = createBottomTabNavigator();
@@ -68,6 +69,11 @@ const App = () => {
         <Stack.Screen
           name="GeoLocationScreen"
           component={MapScreen}
+          options={{headerShown: false}}
+        />
+        <Stack.Screen
+          name="cardDetailsScreen"
+          component={CardDetailsScreen}
           options={{headerShown: false}}
         />
       </Stack.Navigator>

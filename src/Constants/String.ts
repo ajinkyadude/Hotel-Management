@@ -16,4 +16,5 @@ export const String = {
   sale: 'SALE',
   purchase: 'PURCHASED',
   request: 'REQUEST',
+  view: 'VIEW',
 };
