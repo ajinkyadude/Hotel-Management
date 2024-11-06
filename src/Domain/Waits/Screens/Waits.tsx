@@ -148,6 +148,7 @@ const Waits = ({navigation}: any) => {
                     Title={item?.Title}
                     subText={item?.subText}
                     ImageName={item?.ImageName}
+                    navigation={navigation}
                   />
                 );
               })

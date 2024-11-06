@@ -11,16 +11,20 @@ import {Colors} from '../../../Constants/Constant';
 import CustomButton from '../../Auth/CommonComponents/CustomButton';
 import Heart from 'react-native-vector-icons/FontAwesome';
 import {useState} from 'react';
+import {String} from '../../../Constants/String';
 
 interface HotelCard {
-  Title: String;
-  subText: String;
-  ImageName: any;
+  Title: string;
+  subText: string;
+  ImageName: string;
+  navigation: any;
 }
 
 const {height, width} = Dimensions.get('screen');
-const HotelCard = ({Title, subText, ImageName}: HotelCard) => {
-  const ClickHandle = () => {};
+const HotelCard = ({Title, subText, ImageName, navigation}: HotelCard) => {
+  const ClickHandle = () => {
+    navigation.navigate('cardDetailsScreen');
+  };
   const [touched, setTouched] = useState(false);
   return (
     <View style={Styles.mainContainer}>
@@ -79,7 +83,7 @@ const HotelCard = ({Title, subText, ImageName}: HotelCard) => {
           </View>
           <View style={Styles.BottomButtonContainer}>
             <CustomButton
-              label={'VIEW'}
+              label={String.view}
               onClick={ClickHandle}
               style={{width: height * 0.15}}
             />

@@ -2,7 +2,7 @@ import {View} from 'react-native';
 
 interface CustomWhiteWrapper {
   children: JSX.Element;
-  height?: string
+  height?: string;
 }
 
 const WhiteWrapper = ({children, height}: CustomWhiteWrapper) => {
