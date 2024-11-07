@@ -17,4 +17,5 @@ export const String = {
   purchase: 'PURCHASED',
   request: 'REQUEST',
   view: 'VIEW',
+  Dinner_in_The_Sky: 'Dinner in The Sky',
 };

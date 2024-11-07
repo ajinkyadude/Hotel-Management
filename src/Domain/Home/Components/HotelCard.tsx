@@ -18,12 +18,19 @@ interface HotelCard {
   subText: string;
   ImageName: string;
   navigation: any;
+  item?: any;
 }
 
 const {height, width} = Dimensions.get('screen');
-const HotelCard = ({Title, subText, ImageName, navigation}: HotelCard) => {
+const HotelCard = ({
+  Title,
+  subText,
+  ImageName,
+  navigation,
+  item,
+}: HotelCard) => {
   const ClickHandle = () => {
-    navigation.navigate('cardDetailsScreen');
+    navigation.navigate('cardDetailsScreen', {item: item});
   };
   const [touched, setTouched] = useState(false);
   return (
